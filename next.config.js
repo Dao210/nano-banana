@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable Turbopack (default in Next.js 16+)
+  turbopack: {},
   experimental: {
     optimizeCss: true, // Enabled with critters dependency
     optimizePackageImports: [
