@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
-import { Star, Users, BookOpen, Zap, ImageIcon, Palette, Sparkles, ArrowRight, Twitter } from "lucide-react"
+import { Icon } from "@/components/ui/icon"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import dynamic from 'next/dynamic'
@@ -90,7 +90,7 @@ export default function HomePage() {
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <Badge className="mb-4 tech-glow tech-gradient-accent text-white border-0">
-              <Sparkles className="mr-2 h-4 w-4" />
+              <Icon name="sparkles" className="mr-2" size={4} />
               Google&apos;s Latest AI Innovation
             </Badge>
             <h1 className="text-4xl md:text-7xl font-bold text-balance mb-6 font-[family-name:var(--font-space-grotesk)]">
@@ -106,7 +106,7 @@ export default function HomePage() {
                   href="/prompts"
                   title="Browse comprehensive Nano Banana AI image editing prompts"
                 >
-                  <BookOpen className="mr-2 h-5 w-5" />
+                  <Icon name="book-open" className="mr-2" size={5} />
                   Explore Prompts
                 </Link>
               </Button>
@@ -115,13 +115,13 @@ export default function HomePage() {
                   href="/tutorials"
                   title="Browse comprehensive Nano Banana AI image editing tutorials"
                 >
-                  <BookOpen className="mr-2 h-5 w-5" />
+                  <Icon name="book-open" className="mr-2" size={5} />
                   Explore Tutorials
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8 glass tech-glow" asChild>
                 <Link href="/community" title="Join the Nano Banana AI image editing community">
-                  <Users className="mr-2 h-5 w-5" />
+                  <Icon name="users" className="mr-2" size={5} />
                   Join Community
                 </Link>
               </Button>
@@ -146,7 +146,7 @@ export default function HomePage() {
             <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient rounded-full flex items-center justify-center mb-4 tech-glow">
-                  <Zap className="h-8 w-8 text-white" />
+                  <Icon name="zap" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">Expert Tutorials</CardTitle>
               </CardHeader>
@@ -160,7 +160,7 @@ export default function HomePage() {
             <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-accent rounded-full flex items-center justify-center mb-4 tech-glow">
-                  <ImageIcon className="h-8 w-8 text-white" />
+                  <Icon name="image" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">Real Examples</CardTitle>
               </CardHeader>
@@ -174,7 +174,7 @@ export default function HomePage() {
             <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-secondary rounded-full flex items-center justify-center mb-4 tech-glow">
-                  <Palette className="h-8 w-8 text-white" />
+                  <Icon name="palette" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">Latest Updates</CardTitle>
               </CardHeader>
@@ -220,7 +220,7 @@ export default function HomePage() {
               </div>
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
-                  <ImageIcon className="h-8 w-8 text-white" />
+                  <Icon name="image" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">AI Portrait Enhancer</CardTitle>
               </CardHeader>
@@ -232,7 +232,7 @@ export default function HomePage() {
                   <Badge className="tech-glow">Photography</Badge>
                   <Button variant="ghost" size="sm" className="tech-gradient tech-text group-hover:bg-transparent" asChild>
                     <Link href="/prompts" title="Open Prompt Library">
-                      Explore<ArrowRight className="h-4 w-4 ml-1" />
+                      Explore<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
               </div>
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-accent rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
-                  <Palette className="h-8 w-8 text-white" />
+                  <Icon name="palette" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">Minimalist Product Showcase</CardTitle>
               </CardHeader>
@@ -266,7 +266,7 @@ export default function HomePage() {
                   <Badge className="tech-glow">E-commerce</Badge>
                   <Button variant="ghost" size="sm" className="tech-gradient-accent tech-text group-hover:bg-transparent" asChild>
                     <Link href="/prompts" title="Open Prompt Library">
-                      Explore<ArrowRight className="h-4 w-4 ml-1" />
+                      Explore<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -288,7 +288,7 @@ export default function HomePage() {
               </div>
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-secondary rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
-                  <Sparkles className="h-8 w-8 text-white" />
+                  <Icon name="sparkles" size={8} className="text-white" />
                 </div>
                 <CardTitle className="text-xl">Fantasy Character Generator</CardTitle>
               </CardHeader>
@@ -300,7 +300,7 @@ export default function HomePage() {
                   <Badge className="tech-glow">Character</Badge>
                   <Button variant="ghost" size="sm" className="tech-gradient-secondary tech-text group-hover:bg-transparent" asChild>
                     <Link href="/prompts" title="Open Prompt Library">
-                      Explore<ArrowRight className="h-4 w-4 ml-1" />
+                      Explore<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -344,7 +344,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-2">
                   <Badge className="tech-glow">Beginner</Badge>
                   <div className="flex items-center text-sm text-muted-foreground">
-                    <Star className="h-4 w-4 fill-current text-yellow-500 mr-1" />
+                    <Icon name="star" size={4} className="fill-current text-yellow-500 mr-1" />
                     4.9
                   </div>
                 </div>
@@ -364,7 +364,7 @@ export default function HomePage() {
                       href="/tutorials/getting-started"
                       title="Getting started guide for Nano Banana AI image editing"
                     >
-                      Start Learning<ArrowRight className="h-4 w-4 ml-1" />
+                      Start Learning<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -388,7 +388,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-2">
                   <Badge className="tech-glow">Intermediate</Badge>
                   <div className="flex items-center text-sm text-muted-foreground">
-                    <Star className="h-4 w-4 fill-current text-yellow-500 mr-1" />
+                    <Icon name="star" size={4} className="fill-current text-yellow-500 mr-1" />
                     4.8
                   </div>
                 </div>
@@ -407,7 +407,7 @@ export default function HomePage() {
                       href="/tutorials/character-consistency"
                       title="Tutorial on mastering character consistency with Nano Banana AI"
                     >
-                      Start Learning<ArrowRight className="h-4 w-4 ml-1" />
+                      Start Learning<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -431,7 +431,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-2">
                   <Badge className="tech-glow">Advanced</Badge>
                   <div className="flex items-center text-sm text-muted-foreground">
-                    <Star className="h-4 w-4 fill-current text-yellow-500 mr-1" />
+                    <Icon name="star" size={4} className="fill-current text-yellow-500 mr-1" />
                     4.7
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export default function HomePage() {
                       href="/tutorials/multi-turn-editing"
                       title="Advanced multi-turn editing techniques for Nano Banana AI"
                     >
-                      Start Learning<ArrowRight className="h-4 w-4 ml-1" />
+                      Start Learning<Icon name="arrow-right" size={4} className="ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -505,7 +505,7 @@ export default function HomePage() {
               <div className="flex space-x-4">
                 <Link href="https://twitter.com/Joe84742708" target="_blank" rel="noopener noreferrer">
                   <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white p-2">
-                    <Twitter className="h-4 w-4" />
+                    <Icon name="twitter" size={4} />
                   </Button>
                 </Link>
 

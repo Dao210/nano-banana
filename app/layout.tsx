@@ -172,7 +172,19 @@ export default function RootLayout({
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
-
+        <Script
+          id="web-vitals-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                import('/lib/web-vitals.js').then(({ initWebVitals }) => {
+                  initWebVitals();
+                });
+              }
+            `
+          }}
+        />
       </body>
     </html>
   )

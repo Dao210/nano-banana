@@ -4,7 +4,7 @@
 
 ### 技术栈
 
-- 前端：Next.js 16 + TypeScript + TailwindCSS
+- 前端：Next.js + TypeScript + TailwindCSS
 - 后端：Node.js + Express + PostgreSQL
 - 包管理：pnpm
 
