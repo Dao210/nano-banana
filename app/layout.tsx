@@ -134,7 +134,7 @@ export default function RootLayout({
         {/* DNS prefetch and preconnect for performance */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google.com" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
@@ -168,13 +168,6 @@ export default function RootLayout({
             gtag('config', 'G-EB226TXP1L');
           `}
         </Script>
-
-        {/* Google AdSense - Lazy loading */}
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8886185433147735"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
