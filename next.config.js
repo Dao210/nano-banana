@@ -1,24 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizeCss: false, // Disabled due to missing critters dependency
+    optimizeCss: true, // Enabled with critters dependency
     optimizePackageImports: [
       'lucide-react',
       '@radix-ui/react-*',
       'react-hook-form',
       'date-fns',
-      'recharts',
     ],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 1080, 1200, 1920], // Removed 2048, 3840 for most screens
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'nanobanana.fans',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.nanobanana.fans',
       },
     ],
   },

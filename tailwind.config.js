@@ -92,13 +92,14 @@ module.exports = {
         'tech': '0 0 10px rgba(102, 126, 234, 0.5)',
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
-        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 3s ease-in-out forwards',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) forwards',
       },
       keyframes: {
         float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
+          '0%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+          '100%': { transform: 'translateY(0px)' },
         },
       },
     },

@@ -143,7 +143,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center tech-card tech-float">
+            <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient rounded-full flex items-center justify-center mb-4 tech-glow">
                   <Zap className="h-8 w-8 text-white" />
@@ -157,7 +157,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="text-center tech-card tech-float" style={{ animationDelay: '0.2s' }}>
+            <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-accent rounded-full flex items-center justify-center mb-4 tech-glow">
                   <ImageIcon className="h-8 w-8 text-white" />
@@ -171,7 +171,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="text-center tech-card tech-float" style={{ animationDelay: '0.4s' }}>
+            <Card className="text-center tech-card hover:tech-float transition-transform duration-300 will-change-transform transform-gpu">
               <CardHeader>
                 <div className="mx-auto w-16 h-16 tech-gradient-secondary rounded-full flex items-center justify-center mb-4 tech-glow">
                   <Palette className="h-8 w-8 text-white" />
@@ -205,7 +205,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/prompt/portrait-enhanced.jpg"
@@ -219,7 +219,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 tech-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
               <CardHeader>
-                <div className="mx-auto w-16 h-16 tech-gradient rounded-full flex items-center justify-center mb-4 tech-glow tech-pulse">
+                <div className="mx-auto w-16 h-16 tech-gradient rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
                   <ImageIcon className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-xl">AI Portrait Enhancer</CardTitle>
@@ -239,7 +239,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/prompt/product-minimal.jpg"
@@ -253,7 +253,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 tech-gradient-accent opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
               <CardHeader>
-                <div className="mx-auto w-16 h-16 tech-gradient-accent rounded-full flex items-center justify-center mb-4 tech-glow tech-pulse">
+                <div className="mx-auto w-16 h-16 tech-gradient-accent rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
                   <Palette className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-xl">Minimalist Product Showcase</CardTitle>
@@ -273,7 +273,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/prompt/fantasy-character.jpg"
@@ -287,7 +287,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 tech-gradient-secondary opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
               <CardHeader>
-                <div className="mx-auto w-16 h-16 tech-gradient-secondary rounded-full flex items-center justify-center mb-4 tech-glow tech-pulse">
+                <div className="mx-auto w-16 h-16 tech-gradient-secondary rounded-full flex items-center justify-center mb-4 tech-glow group-hover:tech-pulse">
                   <Sparkles className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-xl">Fantasy Character Generator</CardTitle>
@@ -327,7 +327,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/Google-Nano-Banana-AI-Image-Generator-All-You-Need-To-Know.jpg"
@@ -371,7 +371,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/new-tutorial-master-consistent-character-faces-with-nanobanana.webp"
@@ -414,7 +414,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="group tech-card hover:scale-105 transition-all duration-300">
+            <Card className="group tech-card hover:scale-[1.02] transition-all duration-300 will-change-transform transform-gpu">
               <div className="aspect-video rounded-t-lg overflow-hidden relative">
                 <Image
                   src="/Multi-Turn Editing.avif"
@@ -471,13 +471,13 @@ export default function HomePage() {
             Join thousands of creators who are already using Nano Banana to transform their image editing workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 glass tech-glow hover:scale-105 transition-transform" asChild>
+            <Button size="lg" variant="secondary" className="text-lg px-8 glass tech-glow hover:scale-[1.02] transition-transform will-change-transform transform-gpu" asChild>
               <Link href="/tutorials" title="Start learning Nano Banana AI image editing now">Start Learning Now</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 border-white/20 text-white hover:bg-white/10 glass tech-glow hover:scale-105 transition-transform"
+              className="text-lg px-8 border-white/20 text-white hover:bg-white/10 glass tech-glow hover:scale-[1.02] transition-transform will-change-transform transform-gpu"
               asChild
             >
               <Link href="/tutorials" title="Browse all Nano Banana AI image editing tutorials">Browse All Tutorials</Link>

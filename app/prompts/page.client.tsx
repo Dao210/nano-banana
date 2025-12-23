@@ -1,8 +1,7 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useCallback, useEffect } from "react"
 import { Header } from "@/components/header"
-import Footer from "@/components/footer"
 import Hero from "./Hero"
 import CategoryFilter from "./CategoryFilter"
 import PromptGrid from "./PromptGrid"
@@ -24,10 +23,31 @@ const BreadcrumbSchema = dynamic(() => import("@/components/seo-schema").then(mo
   loading: () => null
 })
 
+// 懒加载 Footer 组件以优化初始加载性能
+const Footer = dynamic(() => import("@/components/footer"), {
+  ssr: true,
+  loading: () => <footer className="bg-slate-900 h-[400px]" /> // Placeholder with fixed height to prevent CLS
+})
+
+// Custom debounce hook for search optimization
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay)
+    return () => clearTimeout(timer)
+  }, [value, delay])
+
+  return debouncedValue
+}
+
 const PromptPage = () => {
   const [activeCategory, setActiveCategory] = useState("all")
   const [query, setQuery] = useState("")
   const [sortBy, setSortBy] = useState("title-asc")
+
+  // Debounce search query for 300ms to reduce re-renders
+  const debouncedQuery = useDebounce(query, 300)
 
   // Compute category counts dynamically from data
   const categories = useMemo(() => {
@@ -46,13 +66,13 @@ const PromptPage = () => {
     return normalized
   }, [])
 
-  // Filter by category and search query
+  // Filter by category and search query (using debounced query)
   const filteredPrompts = useMemo(() => {
     const byCategory = activeCategory === "all"
       ? dataPrompts
       : dataPrompts.filter((p) => p.category === activeCategory)
 
-    const normalizedQuery = query.trim().toLowerCase()
+    const normalizedQuery = debouncedQuery.trim().toLowerCase()
     const bySearch = normalizedQuery.length
       ? byCategory.filter(
           (p) =>
@@ -74,7 +94,7 @@ const PromptPage = () => {
     })
 
     return sorted
-  }, [activeCategory, query, sortBy])
+  }, [activeCategory, debouncedQuery, sortBy])
 
   return (
     <div className="min-h-screen bg-background">

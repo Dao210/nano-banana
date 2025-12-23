@@ -23,8 +23,9 @@ yarn-error.log*
 # plan and tasks
 IFLOW.md
 agents.md
-/requirements and tasks
+/docs
 /.claude
+/tasks
 
 # vercel
 .vercel
