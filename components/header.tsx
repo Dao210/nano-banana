@@ -62,7 +62,7 @@ function Header({ currentPath = "/" }: HeaderProps) {
         <div className="flex-shrink-0 flex items-center justify-center mx-4">
           <Link href="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 flex items-center justify-center">
-              <Image src="/favicon.ico" alt="Logo" width={32} height={32} className="h-8 w-8" />
+              <Image src="/banana5-128.webp" alt="Logo" width={32} height={32} className="h-8 w-8" />
             </div>
             <span className="font-bold text-xl text-primary font-[family-name:var(--font-space-grotesk)]">
               Nano Banana
