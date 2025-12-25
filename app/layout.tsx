@@ -134,53 +134,46 @@ export default function RootLayout({
         {/* DNS prefetch and preconnect for performance */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google.com" />
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-        {/* Font preloading for performance */}
-        <link
-          rel="preload"
-          href="/_next/static/media/space-grotesk-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/_next/static/media/dm-sans-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Note: Next.js Fonts automatically handles font preloading, no manual preload needed */}
 
         {/* ...existing meta/link... */}
-        {/* Google Tag Manager - Optimized loading */}
+        {/* Google Tag Manager - Optimized loading with low priority */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EB226TXP1L"
           strategy="afterInteractive"
+          fetchPriority="low"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EB226TXP1L');
-          `}
-        </Script>
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EB226TXP1L', {
+                send_page_view: false,
+                anonymize_ip: true,
+                allow_google_signals: false
+              });
+            `
+          }}
+        />
       </head>
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
         <Script
           id="web-vitals-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               if (typeof window !== 'undefined') {
-                import('/lib/web-vitals.js').then(({ initWebVitals }) => {
-                  initWebVitals();
-                });
+                setTimeout(() => {
+                  import('/lib/web-vitals.js').then(({ initWebVitals }) => {
+                    initWebVitals();
+                  });
+                }, 1000);
               }
             `
           }}

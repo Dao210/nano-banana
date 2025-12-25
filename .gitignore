@@ -26,6 +26,8 @@ agents.md
 /docs
 /.claude
 /tasks
+# 本地离线处理工作
+/scripts
 
 # vercel
 .vercel

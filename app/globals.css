@@ -355,3 +355,64 @@
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
   }
 }
+
+/* =====================================================
+   移动端性能优化 - 禁用复杂动画和特效
+   ===================================================== */
+@media (max-width: 768px) {
+  /* 禁用 hero-orb 动画 - 移动端性能优化 */
+  .hero-orb,
+  .hero-orb-primary,
+  .hero-orb-secondary,
+  .hero-orb-tertiary {
+    animation: none !important;
+    opacity: 0.15 !important; /* 降低不透明度作为静态背景 */
+    transform: none !important;
+  }
+
+  /* 禁用浮动动画 */
+  .tech-float {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* 禁用悬浮效果 */
+  .group-hover\:tech-float:hover {
+    animation: none !important;
+  }
+
+  /* 禁用脉冲动画 */
+  .group-hover\:tech-pulse {
+    animation: none !important;
+  }
+
+  /* 禁用过渡动画以提升性能 */
+  * {
+    transition-property: none !important;
+  }
+
+  /* 保留必要的交互反馈 */
+  button,
+  a,
+  [role="button"] {
+    transition-property: opacity, background-color !important;
+  }
+
+  /* 简化霓虹效果 */
+  .tech-neon {
+    text-shadow: 0 0 5px var(--primary) !important;
+  }
+
+  /* 禁用发光效果 */
+  .tech-glow {
+    filter: none !important;
+  }
+
+  /* 禁用GPU加速以减少内存使用 */
+  .transform-gpu,
+  .will-change-transform,
+  .will-change {
+    transform: none !important;
+    will-change: auto !important;
+  }
+}

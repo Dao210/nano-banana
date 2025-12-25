@@ -333,8 +333,8 @@ export default function HomePage() {
                   src="/Google-Nano-Banana-AI-Image-Generator-All-You-Need-To-Know.jpg"
                   alt="Getting Started with Nano Banana"
                   fill
+                  priority
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
                   placeholder="blur"
                   blurDataURL={getImageBlurData('getting-started')}
                 />
@@ -377,8 +377,8 @@ export default function HomePage() {
                   src="/new-tutorial-master-consistent-character-faces-with-nanobanana.webp"
                   alt="Character Consistency with Nano Banana"
                   fill
+                  priority
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
                   placeholder="blur"
                   blurDataURL={getImageBlurData('character-consistency')}
                 />
@@ -420,8 +420,8 @@ export default function HomePage() {
                   src="/Multi-Turn Editing.avif"
                   alt="Multi-Turn Editing Techniques"
                   fill
+                  priority
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
                   placeholder="blur"
                   blurDataURL={getImageBlurData('multi-turn-editing')}
                 />
@@ -509,9 +509,9 @@ export default function HomePage() {
                   </Button>
                 </Link>
 
-                <Link href="https://feele.net"
+                <Link href="https://veo5.art"
                   target="_blank" rel="dofollow">
-                  Feele.net
+                  veo5.art
                 </Link>
 
 
@@ -618,7 +618,7 @@ export default function HomePage() {
           </div>
 
           <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground">© 2025 Nano Banana Fans. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">© 2025 Nano Banana Fans. All rights reserved.not affiliated with Google.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link
                 href="/privacy"
