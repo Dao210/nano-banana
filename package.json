@@ -13,6 +13,10 @@
     "optimize:128": "node scripts/optimize-thumbnails.js --size=128",
     "optimize:256": "node scripts/optimize-thumbnails.js --size=256",
     "optimize:512": "node scripts/optimize-thumbnails.js --size=512",
+    "optimize:ratio": "node scripts/optimize-aspect-ratio.js",
+    "optimize:16-9": "node scripts/optimize-aspect-ratio.js --ratio=16:9",
+    "optimize:4-3": "node scripts/optimize-aspect-ratio.js --ratio=4:3",
+    "optimize:21-9": "node scripts/optimize-aspect-ratio.js --ratio=21:9",
     "analyze": "ANALYZE=true next build",
     "lighthouse": "lighthouse https://nanobanana.fans --output=html --output-path=./lighthouse-report.html",
     "lighthouse:ci": "lhci autorun"
