@@ -10,6 +10,25 @@
 
 3.prompt 列表页的图片大小为 4:3， 800px:600px
 
+
+  {
+
+id:'24',
+
+slug:'nano-banana-api-integration',
+
+title:'Nano Banana API Integration',
+
+description:'Optimize prompts for Nano Banana API with technical precision',
+
+prompt:'Optimize this prompt for Nano Banana API integration. Structure the request for maximum efficiency and quality output. Include specific parameters for consistency, style, and technical requirements. Ensure the prompt works well with automated workflows and batch processing while maintaining high-quality results.',
+
+tags: ['character', 'api', 'technical', 'automation', 'workflow'],
+
+previewImage:'/tutorials/api-integration.jpg',
+
+  },
+
 ### 选项 1：由简入繁的通用版（推荐，效果最稳）
 
 这个 Prompt 采用了 Gemini 最擅长的描述性语言，强调材质和细节。

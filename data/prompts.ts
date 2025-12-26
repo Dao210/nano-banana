@@ -277,12 +277,12 @@ export const prompts: PromptData[] = [
   },
   {
     id: '24',
-    slug: 'nano-banana-api-integration',
-    title: 'Nano Banana API Integration',
-    description: 'Optimize prompts for Nano Banana API with technical precision',
-    prompt: 'Optimize this prompt for Nano Banana API integration. Structure the request for maximum efficiency and quality output. Include specific parameters for consistency, style, and technical requirements. Ensure the prompt works well with automated workflows and batch processing while maintaining high-quality results.',
-    tags: ['character', 'api', 'technical', 'automation', 'workflow'],
-    previewImage: '/tutorials/api-integration.jpg',
+    slug: '3d-figure-bandai',
+    title: '3D Figure BANDAI Style',
+    description: 'Create commercialized figure displays with BANDAI-style packaging',
+    prompt: 'Create a 1/7 scale commercialized figure of the character in the illustration, in a realistic style and environment. Place the figure on a computer desk, using a circular transparent acrylic base without any text. On the computer screen, display the ZBrush modeling process of the figure. Next to the computer screen, place a BANDAI-style toy packaging box printed with the original artwork.',
+    tags: ['3d', 'figure', 'product', 'bandai'],
+    previewImage: '/prompt/3d-figure-2-effect.webp',
   },
   {
     id: '25',
@@ -479,7 +479,7 @@ export const prompts: PromptData[] = [
     description: 'Transform photos into vintage Halloween posters with witch aesthetics',
     prompt: 'Transform the uploaded photo into a vintage Halloween poster. Preserve the same person, face, hairstyle, pose, and outfit colors — do not replace the subject or change their skin tone or body shape. Add a classic black witch hat (slightly tilted with a brass buckle) and a flowing black satin cape with natural folds. Have the subject hold a glowing carved jack-o-lantern, with warm candlelight illuminating the hands and chin. Create a diagonal split background of dark teal and burnt orange, with subtle mist and fine spider-web texture; place a full moon at the top-right and bat + ghost silhouettes at the top-left as small accents. Add a bold vintage serif headline "Halloween Night" at the top and "Trick or Treat" at the bottom.',
     tags: ['creative', 'halloween', 'poster', 'vintage'],
-    previewImage: '/prompt/halloween-poster-effect.webp',
+    previewImage: '/prompt/vintage-Halloween-poster.webp',
   },
   {
     id: '47',
@@ -858,15 +858,6 @@ export const prompts: PromptData[] = [
     prompt: 'Transform into a modern high-quality digital portrait with vibrant updated colors, smooth realistic skin textures, and natural lighting. The outfit and background should be upgraded into a clean, modern aesthetic while preserving the authenticity of the original pose and expression.',
     tags: ['photography', 'restoration', 'vintage', 'enhancement'],
     previewImage: '/prompt/old-photo-restore-effect.webp',
-  },
-  {
-    id: '89',
-    slug: '3d-figure-bandai',
-    title: '3D Figure BANDAI Style',
-    description: 'Create commercialized figure displays with BANDAI-style packaging',
-    prompt: 'Create a 1/7 scale commercialized figure of the character in the illustration, in a realistic style and environment. Place the figure on a computer desk, using a circular transparent acrylic base without any text. On the computer screen, display the ZBrush modeling process of the figure. Next to the computer screen, place a BANDAI-style toy packaging box printed with the original artwork.',
-    tags: ['3d', 'figure', 'product', 'bandai'],
-    previewImage: '/prompt/3d-figure-2-effect.webp',
   }
 
 ];

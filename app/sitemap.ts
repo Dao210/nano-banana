@@ -46,10 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Generate prompt detail pages using real data from prompts.ts
-  // Use recent update date for prompts (last major update: 2024-12-26)
+  // Use recent update date for prompts (last major update: 2025-12-26)
   const promptDetailPages = prompts.map((prompt) => ({
     url: `${baseUrl}/prompts/${prompt.slug}`,
-    lastModified: "2024-12-26", // When prompts were last significantly updated
+    lastModified: "2025-12-26", // When prompts were last significantly updated
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }))
