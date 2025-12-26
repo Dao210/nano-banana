@@ -10,11 +10,11 @@ export interface PromptData {
 }
 
 export const categories = [
-  { id: 'all', label: 'All', count: 38 },
+  { id: 'all', label: 'All', count: 39 },
   { id: 'creative', label: 'Creative', count: 12 },
   { id: 'design', label: 'Design', count: 9 },
   { id: 'ecommerce', label: 'E-commerce', count: 5 },
-  { id: 'photography', label: 'Photography', count: 6 },
+  { id: 'photography', label: 'Photography', count: 7 },
   { id: 'character', label: 'Character', count: 5 },
   { id: 'logo', label: 'Logo', count: 1 },
 ];
@@ -23,21 +23,22 @@ export const prompts: PromptData[] = [
   {
     id: '1',
     slug: 'abstract-banana',
-    title: 'Abstract Banana',
-    description: 'Transform the shape of a banana into a 3D model or data stream by using low-poly or wireframe elements.',
+    title: 'Abstract Banana logo',
+    description: 'I spent half a day creating the logo for this project and revised the prompts 20 times.',
     prompt: 'Logo design, minimal, a stylized abstract banana shape constructed from 3D wireframe mesh and digital nodes, connection points, tech blue and bright yellow color palette, isometric view, vector art, clean lines, white background, symbol of digital reconstruction, professional software icon, flat design, sharp edges --no realistic fruit, food, cartoon, text, shading, complex details.',
     category: 'logo',
     previewImage: '/prompt/abstract-banana.webp',
   },
-  {
+   {
     id: '2',
-    slug: 'vintage-film-effect-generator',
-    title: 'Vintage Film Effect Generator',
-    description: 'Add authentic vintage film aesthetics to modern photos with grain and color grading',
-    prompt: 'Apply a vintage 1970s film aesthetic to this image. Add authentic film grain, slightly faded colors with a warm undertone, and subtle light leaks around the edges. Create the look of photos taken with a classic 35mm camera, with slightly overexposed highlights and rich, muted tones.',
-    category: 'creative',
-    previewImage: '/prompt/Vintage film effect.jpeg',
-  },
+    slug: 'chinese-ink-painting',
+    title: 'Chinese ink painting',
+    description: 'Traditional Chinese ink painting, a timeless art form, uses ink on rice paper or silk. With simple yet profound brushstrokes, it captures the essence of nature and emotions, blending artistry with philosophy.',
+    prompt: '(style of Tsai Chih-chung:1.3), traditional Chinese ink painting, cartoon, minimalist, (solitary monk:1.2), walking in blizzard, heavy snow, wind blowing, flowing robes, simple lines, zen, calligraphy style, white background, negative space, masterpiece, high quality, 16:9 aspect ratio.',
+    category: 'Photography',
+    previewImage: '/prompt/chinese-ink-painting.webp',
+  }, 
+  
   {
     id: '3',
     slug: 'minimalist-product-showcase',
@@ -360,6 +361,15 @@ export const prompts: PromptData[] = [
     prompt: 'Transform this portrait into a professional studio headshot. Enhance the lighting to create soft, even illumination that flatters the subject. Add subtle depth of field with a blurred background. Improve skin texture naturally while maintaining authentic features. Use warm, professional lighting similar to high-end portrait photography.',
     category: 'photography',
     previewImage: '/prompt/portrait-enhanced.jpg',
+  },
+  {
+    id: '39',
+    slug: 'vintage-film-effect-generator',
+    title: 'Vintage Film Effect Generator',
+    description: 'Add authentic vintage film aesthetics to modern photos with grain and color grading',
+    prompt: 'Apply a vintage 1970s film aesthetic to this image. Add authentic film grain, slightly faded colors with a warm undertone, and subtle light leaks around the edges. Create the look of photos taken with a classic 35mm camera, with slightly overexposed highlights and rich, muted tones.',
+    category: 'creative',
+    previewImage: '/prompt/Vintage film effect.jpeg',
   }
 
 
