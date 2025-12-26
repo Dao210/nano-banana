@@ -29,7 +29,7 @@ export function PromptsSchema() {
             "Nano Banana",
             "AI prompt",
             "image editing",
-            prompt.category,
+            ...prompt.tags,
             "artificial intelligence"
           ].join(", ")
         }

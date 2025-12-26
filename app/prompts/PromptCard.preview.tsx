@@ -14,7 +14,7 @@ interface PromptCardPreviewProps {
   title: string;
   description: string;
   prompt: string;
-  category: string;
+  tags: string[];
   previewImage: string;
 }
 
@@ -24,7 +24,7 @@ const PromptCardPreview = ({
   title,
   description,
   prompt,
-  category,
+  tags,
   previewImage,
 }: PromptCardPreviewProps) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -58,6 +58,27 @@ const PromptCardPreview = ({
     router.push(`/prompts/${slug}`);
   };
 
+  // Prepare tags for display (max 3 tags + "+N more")
+  const displayTags = tags.slice(0, 3);
+  const remainingTagsCount = Math.max(0, tags.length - 3);
+
+  // Tag color mapping
+  const getTagColor = (tag: string): string => {
+    const tagColors: Record<string, string> = {
+      creative: '#9333ea',
+      design: '#3b82f6',
+      photography: '#10b981',
+      ecommerce: '#f59e0b',
+      character: '#ef4444',
+      logo: '#8b5cf6',
+    };
+    return tagColors[tag] || '#6b7280';
+  };
+
+  const getTagLabel = (tag: string): string => {
+    return tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ');
+  };
+
   return (
     <Link href={`/prompts/${slug}`} className="block">
       <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 tech-card hover:scale-105 cursor-pointer pt-0 pb-0 h-full flex flex-col">
@@ -71,9 +92,24 @@ const PromptCardPreview = ({
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
           <div className="absolute inset-0 tech-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-          <Badge className="absolute top-3 left-3 tech-glow tech-gradient text-white border-0">
-            {category}
-          </Badge>
+
+          {/* Tags */}
+          <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+            {displayTags.map((tag) => (
+              <Badge
+                key={tag}
+                className="text-xs px-2 py-0.5 text-white border-0 shadow-sm"
+                style={{ backgroundColor: getTagColor(tag) }}
+              >
+                {getTagLabel(tag)}
+              </Badge>
+            ))}
+            {remainingTagsCount > 0 && (
+              <Badge variant="outline" className="text-xs px-2 py-0.5 bg-white/90 backdrop-blur-sm border-border/50">
+                +{remainingTagsCount}
+              </Badge>
+            )}
+          </div>
         </div>
 
         {/* 标题和描述 */}
@@ -93,7 +129,7 @@ const PromptCardPreview = ({
               variant="ghost"
               size="sm"
               onClick={handleCopy}
-              className="flex-1 tech-gradient-secondary"
+              className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-md hover:shadow-lg transition-all duration-200"
             >
               {isCopied ? (
                 <>
@@ -111,7 +147,7 @@ const PromptCardPreview = ({
               variant="ghost"
               size="sm"
               onClick={handleViewDetails}
-              className="flex-1 tech-gradient-secondary"
+              className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Eye className="h-3 w-3 mr-1" />
               Details

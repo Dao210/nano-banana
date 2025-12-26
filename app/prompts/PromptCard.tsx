@@ -15,12 +15,12 @@ interface PromptCardProps {
   title: string;
   description: string;
   prompt: string;
-  category: string;
+  tags: string[];
   previewImage: string;
   originalImages?: string[];
 }
 
-const PromptCard = ({ id, slug, title, description, prompt, category, previewImage, originalImages }: PromptCardProps) => {
+const PromptCard = ({ id, slug, title, description, prompt, tags, previewImage, originalImages }: PromptCardProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const { toast } = useToast();
 
@@ -45,6 +45,27 @@ const PromptCard = ({ id, slug, title, description, prompt, category, previewIma
     }
   };
 
+  // Prepare tags for display (max 3 tags + "+N more")
+  const displayTags = tags.slice(0, 3);
+  const remainingTagsCount = Math.max(0, tags.length - 3);
+
+  // Tag color mapping
+  const getTagColor = (tag: string): string => {
+    const tagColors: Record<string, string> = {
+      creative: '#9333ea',
+      design: '#3b82f6',
+      photography: '#10b981',
+      ecommerce: '#f59e0b',
+      character: '#ef4444',
+      logo: '#8b5cf6',
+    };
+    return tagColors[tag] || '#6b7280';
+  };
+
+  const getTagLabel = (tag: string): string => {
+    return tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ');
+  };
+
   return (
     <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 tech-card cursor-pointer p-0">
       <Link href={`/prompts/${slug}`} className="block">
@@ -58,10 +79,23 @@ const PromptCard = ({ id, slug, title, description, prompt, category, previewIma
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
 
-          {/* Category Badge */}
-          <Badge className="absolute top-3 left-3 tech-glow tech-gradient text-white border-0">
-            {category}
-          </Badge>
+          {/* Tags */}
+          <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+            {displayTags.map((tag) => (
+              <Badge
+                key={tag}
+                className="text-xs px-2 py-0.5 text-white border-0 shadow-sm"
+                style={{ backgroundColor: getTagColor(tag) }}
+              >
+                {getTagLabel(tag)}
+              </Badge>
+            ))}
+            {remainingTagsCount > 0 && (
+              <Badge variant="outline" className="text-xs px-2 py-0.5 bg-white/90 backdrop-blur-sm border-border/50">
+                +{remainingTagsCount}
+              </Badge>
+            )}
+          </div>
         </div>
 
         {/* Content Section */}
@@ -80,10 +114,10 @@ const PromptCard = ({ id, slug, title, description, prompt, category, previewIma
             <Button
               onClick={handleCopyPrompt}
               size="sm"
-              className={`flex-1 h-10 font-medium transition-all duration-300 ${
+              className={`flex-1 h-10 font-medium transition-all duration-200 ${
                 isCopied
-                  ? 'bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/30'
-                  : 'bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 hover:from-cyan-600 hover:via-blue-600 hover:to-indigo-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] border border-blue-400/30 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:scale-[1.02]'
+                  ? 'bg-emerald-500 hover:bg-emerald-600 text-white shadow-md'
+                  : 'bg-accent hover:bg-accent/90 text-accent-foreground shadow-md hover:shadow-lg'
               }`}
             >
               {isCopied ? (
@@ -101,7 +135,7 @@ const PromptCard = ({ id, slug, title, description, prompt, category, previewIma
 
             <Button
               size="sm"
-              className="flex-1 h-10 font-medium bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 hover:from-violet-600 hover:via-purple-600 hover:to-fuchsia-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] border border-purple-400/30 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-[1.02] transition-all duration-300"
+              className="flex-1 h-10 font-medium bg-accent hover:bg-accent/90 text-accent-foreground shadow-md hover:shadow-lg transition-all duration-200"
             >
               <ExternalLink className="h-4 w-4 mr-2" />
               View Details

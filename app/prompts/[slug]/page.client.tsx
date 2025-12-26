@@ -18,7 +18,7 @@ interface PromptDetailClientProps {
     title: string;
     description: string;
     prompt: string;
-    category: string;
+    tags: string[];
     previewImage: string;
     originalImages?: string[];
   };
@@ -27,7 +27,7 @@ interface PromptDetailClientProps {
     slug: string;
     title: string;
     description: string;
-    category: string;
+    tags: string[];
     previewImage: string;
   }>;
   categoryLabel: string;
@@ -89,10 +89,10 @@ export default function PromptDetailClient({
           title: prompt.title,
           headline: prompt.title,
           description: prompt.description,
-          url: `https://nanobanana.fans/prompts/${prompt.id}`,
+          url: `https://nanobanana.fans/prompts/${prompt.slug}`,
           image: `https://nanobanana.fans${prompt.previewImage}`,
-          keywords: [prompt.title, categoryLabel, 'Nano Banana', 'AI prompt', 'image editing'],
-          category: prompt.category,
+          keywords: [prompt.title, categoryLabel, 'Nano Banana', 'AI prompt', 'image editing', ...prompt.tags],
+          category: prompt.tags[0],
         }}
       />
 
@@ -100,8 +100,8 @@ export default function PromptDetailClient({
         items={[
           { name: 'Home', url: 'https://nanobanana.fans' },
           { name: 'Prompts', url: 'https://nanobanana.fans/prompts' },
-          { name: categoryLabel, url: `https://nanobanana.fans/prompts?category=${prompt.category}` },
-          { name: prompt.title, url: `https://nanobanana.fans/prompts/${prompt.id}` },
+          { name: categoryLabel, url: `https://nanobanana.fans/prompts?tag=${prompt.tags[0]}` },
+          { name: prompt.title, url: `https://nanobanana.fans/prompts/${prompt.slug}` },
         ]}
       />
 
@@ -139,12 +139,34 @@ export default function PromptDetailClient({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* 主内容区 */}
             <main className="lg:col-span-2">
-              {/* 标题和分类 */}
+              {/* 标题和标签 */}
               <div className="mb-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge className="tech-glow tech-gradient text-white border-0">
-                    {categoryLabel}
-                  </Badge>
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  {prompt.tags.map((tag) => {
+                    const getTagColor = (tag: string): string => {
+                      const tagColors: Record<string, string> = {
+                        creative: '#9333ea',
+                        design: '#3b82f6',
+                        photography: '#10b981',
+                        ecommerce: '#f59e0b',
+                        character: '#ef4444',
+                        logo: '#8b5cf6',
+                      };
+                      return tagColors[tag] || '#6b7280';
+                    };
+                    const getTagLabel = (tag: string): string => {
+                      return tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ');
+                    };
+                    return (
+                      <Badge
+                        key={tag}
+                        className="tech-glow text-white border-0"
+                        style={{ backgroundColor: getTagColor(tag) }}
+                      >
+                        {getTagLabel(tag)}
+                      </Badge>
+                    );
+                  })}
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance font-[family-name:var(--font-space-grotesk)]">
                   {prompt.title}
@@ -362,13 +384,40 @@ export default function PromptDetailClient({
                 {/* 分类信息 */}
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Category</CardTitle>
+                    <CardTitle className="text-lg">Tags</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Type</span>
-                        <Badge variant="outline">{categoryLabel}</Badge>
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-sm text-muted-foreground block mb-2">Labels</span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {prompt.tags.map((tag) => {
+                            const getTagColor = (tag: string): string => {
+                              const tagColors: Record<string, string> = {
+                                creative: '#9333ea',
+                                design: '#3b82f6',
+                                photography: '#10b981',
+                                ecommerce: '#f59e0b',
+                                character: '#ef4444',
+                                logo: '#8b5cf6',
+                              };
+                              return tagColors[tag] || '#6b7280';
+                            };
+                            const getTagLabel = (tag: string): string => {
+                              return tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ');
+                            };
+                            return (
+                              <Badge
+                                key={tag}
+                                variant="outline"
+                                className="text-xs"
+                                style={{ borderColor: getTagColor(tag), color: getTagColor(tag) }}
+                              >
+                                {getTagLabel(tag)}
+                              </Badge>
+                            );
+                          })}
+                        </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground">ID</span>

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const categoryLabel = prompt.category.charAt(0).toUpperCase() + prompt.category.slice(1);
+  const categoryLabel = prompt.tags[0].charAt(0).toUpperCase() + prompt.tags[0].slice(1);
 
   return {
     title: `${prompt.title} - ${categoryLabel} Nano Banana AI Prompt`,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       'AI image editing',
       'prompt library',
       'image editing prompts',
-      prompt.category,
+      ...prompt.tags,
     ],
     openGraph: {
       title: prompt.title,
@@ -88,13 +88,13 @@ export default async function PromptDetailPage({ params }: { params: Promise<{ s
     notFound();
   }
 
-  // 查找相关 prompts（同分类，排除当前）
+  // 查找相关 prompts（有共同标签，排除当前）
   const relatedPrompts = prompts
-    .filter((p) => p.category === prompt.category && p.slug !== prompt.slug)
+    .filter((p) => p.tags.some(tag => prompt.tags.includes(tag)) && p.slug !== prompt.slug)
     .slice(0, 4);
 
-  // 查找分类标签
-  const categoryLabel = prompt.category.charAt(0).toUpperCase() + prompt.category.slice(1);
+  // 查找主分类标签（使用第一个标签作为主分类）
+  const categoryLabel = prompt.tags[0].charAt(0).toUpperCase() + prompt.tags[0].slice(1);
 
   return (
     <PromptDetailClient

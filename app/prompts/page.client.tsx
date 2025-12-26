@@ -9,7 +9,7 @@ import { PromptsSchema } from "./schema"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
-import { categories as baseCategories, prompts as dataPrompts } from "@/data/prompts"
+import { mainTags as baseMainTags, prompts as dataPrompts } from "@/data/prompts"
 import dynamic from 'next/dynamic'
 
 // 动态导入SEO组件以避免ChunkLoadError
@@ -42,23 +42,25 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 const PromptPage = () => {
-  const [activeCategory, setActiveCategory] = useState("all")
+  const [activeTag, setActiveTag] = useState("all")
   const [query, setQuery] = useState("")
-  const [sortBy, setSortBy] = useState("title-asc")
+  const [sortBy, setSortBy] = useState("default")
 
   // Debounce search query for 300ms to reduce re-renders
   const debouncedQuery = useDebounce(query, 300)
 
-  // Compute category counts dynamically from data
-  const categories = useMemo(() => {
+  // Compute tag counts dynamically from data
+  const mainTags = useMemo(() => {
     const counts: Record<string, number> = dataPrompts.reduce((acc, p) => {
-      acc[p.category] = (acc[p.category] || 0) + 1
+      p.tags.forEach(tag => {
+        acc[tag] = (acc[tag] || 0) + 1
+      })
       return acc
     }, {} as Record<string, number>)
 
-    const normalized = baseCategories.map((c) => ({
-      ...c,
-      count: c.id === "all" ? dataPrompts.length : counts[c.id] || 0,
+    const normalized = baseMainTags.map((t) => ({
+      ...t,
+      count: t.id === "all" ? dataPrompts.length : counts[t.id] || 0,
     }))
 
     // Ensure "all" is first
@@ -66,21 +68,21 @@ const PromptPage = () => {
     return normalized
   }, [])
 
-  // Filter by category and search query (using debounced query)
+  // Filter by tag and search query (using debounced query)
   const filteredPrompts = useMemo(() => {
-    const byCategory = activeCategory === "all"
+    const byTag = activeTag === "all"
       ? dataPrompts
-      : dataPrompts.filter((p) => p.category === activeCategory)
+      : dataPrompts.filter((p) => p.tags.includes(activeTag))
 
     const normalizedQuery = debouncedQuery.trim().toLowerCase()
     const bySearch = normalizedQuery.length
-      ? byCategory.filter(
+      ? byTag.filter(
           (p) =>
             p.title.toLowerCase().includes(normalizedQuery) ||
             p.description.toLowerCase().includes(normalizedQuery) ||
             p.prompt.toLowerCase().includes(normalizedQuery)
         )
-      : byCategory
+      : byTag
 
     const sorted = [...bySearch].sort((a, b) => {
       switch (sortBy) {
@@ -88,13 +90,14 @@ const PromptPage = () => {
           return a.title.localeCompare(b.title)
         case "title-desc":
           return b.title.localeCompare(a.title)
+        case "default":
         default:
-          return 0
+          return parseInt(a.id) - parseInt(b.id)
       }
     })
 
     return sorted
-  }, [activeCategory, debouncedQuery, sortBy])
+  }, [activeTag, debouncedQuery, sortBy])
 
   return (
     <div className="min-h-screen bg-background">
@@ -141,6 +144,7 @@ const PromptPage = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="default">Default</SelectItem>
                   <SelectItem value="title-asc">Title A→Z</SelectItem>
                   <SelectItem value="title-desc">Title Z→A</SelectItem>
                 </SelectContent>
@@ -151,9 +155,9 @@ const PromptPage = () => {
 
         {/* Category Filter */}
         <CategoryFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
+          categories={mainTags}
+          activeCategory={activeTag}
+          onCategoryChange={setActiveTag}
         />
 
         {/* Grid */}

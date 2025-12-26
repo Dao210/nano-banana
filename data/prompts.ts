@@ -4,12 +4,58 @@ export interface PromptData {
   title: string;
   description: string;
   prompt: string;
-  category: string;
+  tags: string[];
   previewImage: string;
   originalImages?: string[];
 }
 
-export const categories = [
+export interface TagInfo {
+  id: string;
+  label: string;
+  description: string;
+  color: string;
+}
+
+export const tagConfig: Record<string, TagInfo> = {
+  creative: {
+    id: 'creative',
+    label: 'Creative',
+    description: 'Artistic and creative transformations',
+    color: '#9333ea',
+  },
+  design: {
+    id: 'design',
+    label: 'Design',
+    description: 'Design and visualization',
+    color: '#3b82f6',
+  },
+  photography: {
+    id: 'photography',
+    label: 'Photography',
+    description: 'Photography and portrait enhancement',
+    color: '#10b981',
+  },
+  ecommerce: {
+    id: 'ecommerce',
+    label: 'E-commerce',
+    description: 'Product and e-commerce photography',
+    color: '#f59e0b',
+  },
+  character: {
+    id: 'character',
+    label: 'Character',
+    description: 'Character consistency and generation',
+    color: '#ef4444',
+  },
+  logo: {
+    id: 'logo',
+    label: 'Logo',
+    description: 'Logo and branding design',
+    color: '#8b5cf6',
+  },
+};
+
+export const mainTags = [
   { id: 'all', label: 'All', count: 39 },
   { id: 'creative', label: 'Creative', count: 12 },
   { id: 'design', label: 'Design', count: 9 },
@@ -26,7 +72,7 @@ export const prompts: PromptData[] = [
     title: 'Abstract Banana logo',
     description: 'I spent half a day creating the logo for this project and revised the prompts 20 times.',
     prompt: 'Logo design, minimal, a stylized abstract banana shape constructed from 3D wireframe mesh and digital nodes, connection points, tech blue and bright yellow color palette, isometric view, vector art, clean lines, white background, symbol of digital reconstruction, professional software icon, flat design, sharp edges --no realistic fruit, food, cartoon, text, shading, complex details.',
-    category: 'logo',
+    tags: ['logo', '3d', 'minimalist', 'tech', 'branding'],
     previewImage: '/prompt/abstract-banana.webp',
   },
    {
@@ -35,27 +81,26 @@ export const prompts: PromptData[] = [
     title: 'Chinese ink painting',
     description: 'Traditional Chinese ink painting, a timeless art form, uses ink on rice paper or silk. With simple yet profound brushstrokes, it captures the essence of nature and emotions, blending artistry with philosophy.',
     prompt: '(style of Tsai Chih-chung:1.3), traditional Chinese ink painting, cartoon, minimalist, (solitary monk:1.2), walking in blizzard, heavy snow, wind blowing, flowing robes, simple lines, zen, calligraphy style, white background, negative space, masterpiece, high quality, 16:9 aspect ratio.',
-    category: 'Photography',
+    tags: ['photography', 'art', 'chinese-style', 'landscape', 'watercolor'],
     previewImage: '/prompt/chinese-ink-painting.webp',
-  }, 
-  
-  {
-    id: '3',
-    slug: 'minimalist-product-showcase',
-    title: 'Minimalist Product Showcase',
-    description: 'Create clean, minimalist product photography with professional studio lighting',
-    prompt: 'Transform this product photo into a minimalist studio shot. Place the product on a clean white surface with subtle shadows. Use professional studio lighting to eliminate harsh shadows while maintaining product definition. Add a gradient background that transitions from white to light gray. Ensure the product is the clear focal point.',
-    category: 'ecommerce',
-    previewImage: '/prompt/minimalist-product-showcase.webp',
   },
   {
+    id: '3',
+    slug: 'family-crest',
+    title: 'family crest',
+    description: 'featuring a majestic dragon on a shield',
+    prompt: 'A highly detailed European family crest featuring a majestic dragon on a shield. The shield is metallic with intricate engravings and an ornate border. The dragon is fierce, depicted in a rampant pose with scales visible, symbolizing strength and heritage. The design is centered, symmetrical, and heraldic. 8k resolution, cinematic lighting, photorealistic texture, white background.',
+    tags: ['creative', 'art', 'heraldic', 'crest', 'detailed'],
+    previewImage: '/prompt/family-crest.webp',
+  },
+   {
     id: '4',
-    slug: 'artistic-sketch-converter',
-    title: 'Artistic Sketch Converter',
-    description: 'Convert photos into detailed pencil sketches with realistic shading and texture',
-    prompt: 'Convert this photograph into a detailed pencil sketch artwork. Use realistic graphite pencil techniques with varying line weights and cross-hatching for shadows. Maintain the original composition while emphasizing contrast and detail. Create the appearance of being drawn on textured paper with subtle paper grain visible.',
-    category: 'creative',
-    previewImage: '/prompt/artistic-sketch-converter.webp',
+    slug: 'ghibli-forest-guardian',
+    title: 'Ghibli Forest Guardian',
+    description: 'Illustrate a whimsical forest spirit guiding children through a glowing woodland',
+    prompt: 'Illustrate a hand-painted scene inspired by Studio Ghibli. Depict a gentle forest spirit with soft fur and luminescent markings walking beside two curious children down a mossy path. Surround them with oversized ferns, floating fireflies, and dappled golden hour light filtering through cedar trees. Use pastel palettes, watercolor textures, and subtle film grain to evoke warmth and nostalgia.',
+    tags: ['creative', 'ghibli', 'anime', 'fantasy', 'watercolor'],
+    previewImage: '/prompt/Ghibli-Forest-Guardian.webp',
   },
   {
     id: '5',
@@ -63,7 +108,7 @@ export const prompts: PromptData[] = [
     title: 'Architectural Visualization',
     description: 'Enhance architectural photos with professional lighting and atmospheric effects',
     prompt: 'Enhance this architectural photograph with professional visualization techniques. Add dramatic lighting that emphasizes the building\'s form and materials. Include subtle atmospheric effects like soft morning light or golden hour illumination. Enhance colors to make materials more vibrant while maintaining architectural accuracy.',
-    category: 'design',
+    tags: ['design', 'architecture', 'visualization', 'lighting', 'exterior'],
     previewImage: '/prompt/architecture-viz.jpg',
   },
   {
@@ -72,7 +117,7 @@ export const prompts: PromptData[] = [
     title: 'Fantasy Character Generator',
     description: 'Transform portraits into fantasy characters with magical elements and costume design',
     prompt: 'Transform this person into a fantasy character. Add elaborate fantasy costume elements like flowing robes, intricate jewelry, or mystical accessories. Include subtle magical effects such as glowing eyes or ethereal lighting. Set the scene in an enchanted environment with magical atmosphere while keeping the person recognizable.',
-    category: 'character',
+    tags: ['character', 'fantasy', 'portrait', 'costume', 'magical'],
     previewImage: '/prompt/fantasy-character.jpg',
   },
   {
@@ -81,7 +126,7 @@ export const prompts: PromptData[] = [
     title: 'Seasonal Landscape Changer',
     description: 'Change the season of landscape photos while maintaining natural realism',
     prompt: 'Transform this landscape to show it in a different season. If it\'s summer, add autumn colors to foliage, or winter snow coverage, or spring blossoms. Adjust lighting, sky conditions, and atmospheric effects to match the new season. Ensure all changes look natural and maintain the original landscape\'s character.',
-    category: 'creative',
+    tags: ['creative', 'landscape', 'seasonal', 'nature', 'transformation'],
     previewImage: '/prompt/seasonal-landscape-changer.webp',
   },
   {
@@ -90,7 +135,7 @@ export const prompts: PromptData[] = [
     title: 'Modern Interior Styling',
     description: 'Update interior spaces with contemporary design elements and better lighting',
     prompt: 'Redesign this interior space with modern contemporary styling. Update furniture to sleek, minimalist pieces with neutral colors and clean lines. Improve lighting with modern fixtures and add large windows for natural light. Include plants and modern decor accessories while maintaining the room\'s basic layout.',
-    category: 'design',
+    tags: ['design', 'interior', 'minimalist', 'modern', 'lighting'],
     previewImage: '/prompt/Modern-Interior-Styling.webp',
   },
   {
@@ -99,7 +144,7 @@ export const prompts: PromptData[] = [
     title: 'Food Photography Enhancer',
     description: 'Make food photos more appetizing with professional food styling techniques',
     prompt: 'Enhance this food photograph using professional food styling techniques. Improve colors to make the food look more vibrant and appetizing. Add subtle steam effects for hot dishes, enhance textures, and adjust lighting for optimal presentation. Include complementary garnishes and styling elements.',
-    category: 'photography',
+    tags: ['photography', 'food', 'styling', 'commercial', 'enhancement'],
     previewImage: '/prompt/food-photography-enhancer.jpg',
   },
   {
@@ -108,7 +153,7 @@ export const prompts: PromptData[] = [
     title: 'Luxury Brand Aesthetic',
     description: 'Apply high-end luxury branding aesthetics to product photos',
     prompt: 'Transform this product photo with luxury brand aesthetics. Use elegant, high-contrast lighting with dramatic shadows. Add premium materials and textures in the background. Create sophisticated color grading with deep blacks, crisp whites, and metallic accents. Make the overall composition feel exclusive and high-end.',
-    category: 'ecommerce',
+    tags: ['ecommerce', 'luxury', 'product', 'branding', 'high-end'],
     previewImage: '/prompt/luxury-brand-aesthetic.webp',
   },
   {
@@ -117,7 +162,7 @@ export const prompts: PromptData[] = [
     title: 'Artistic Neon Effect',
     description: 'Add futuristic neon lighting effects with cyberpunk aesthetics',
     prompt: 'Add futuristic neon lighting effects to this image. Include vibrant neon colors like electric blue, hot pink, and cyan that illuminate the subject. Create a cyberpunk atmosphere with urban nighttime setting. Add subtle glow effects and reflections while maintaining the original subject\'s clarity.',
-    category: 'creative',
+    tags: ['creative', 'neon', 'cyberpunk', 'lighting', 'futuristic'],
     previewImage: '/prompt/Artistic-Neon-Effect.webp',
   },
   {
@@ -126,7 +171,7 @@ export const prompts: PromptData[] = [
     title: 'Logo Integration Specialist',
     description: 'Seamlessly integrate logos and branding into existing photos',
     prompt: 'Seamlessly integrate branding elements into this photograph. Add logos or text in a natural way that complements the image composition. Ensure the branding looks like it was originally part of the scene with proper lighting, shadows, and perspective. Maintain brand guidelines while creating authentic integration.',
-    category: 'design',
+    tags: ['design', 'branding', 'integration', 'logo', 'marketing'],
     previewImage: '/prompt/logo-integration.webp',
   },
   {
@@ -135,7 +180,7 @@ export const prompts: PromptData[] = [
     title: 'Nano Banana Character Consistency',
     description: 'Maintain character likeness across multiple edits using Nano Banana best practices',
     prompt: 'Using Nano Banana AI, maintain perfect character consistency while applying this edit. Preserve facial features, skin tone, and distinctive characteristics. Ensure the character remains recognizable across all transformations. Apply subtle adjustments that enhance the image while keeping the core identity intact.',
-    category: 'character',
+    tags: ['character', 'consistency', 'portrait', 'api', 'editing'],
     previewImage: '/new-tutorial-master-consistent-character-faces-with-nanobanana.webp',
   },
   {
@@ -144,7 +189,7 @@ export const prompts: PromptData[] = [
     title: 'Multi-Turn Editing Master',
     description: 'Advanced multi-step editing workflow for complex transformations',
     prompt: 'Apply this complex multi-turn edit using Nano Banana AI. Break down the transformation into logical steps: first adjust lighting and color, then modify specific elements, finally refine details. Ensure each step builds upon the previous one while maintaining image quality and coherence throughout the process.',
-    category: 'creative',
+    tags: ['creative', 'api', 'workflow', 'editing', 'advanced'],
     previewImage: '/Multi-Turn Editing.avif',
   },
   {
@@ -153,7 +198,7 @@ export const prompts: PromptData[] = [
     title: 'Professional Headshot Studio',
     description: 'Create corporate-quality professional headshots with perfect lighting',
     prompt: 'Transform this into a professional corporate headshot. Use soft, even lighting that eliminates harsh shadows. Position the subject with proper framing (head and shoulders). Apply subtle retouching to enhance professional appearance while maintaining authenticity. Use a clean, neutral background that complements business attire.',
-    category: 'photography',
+    tags: ['photography', 'portrait', 'headshot', 'professional', 'studio'],
     previewImage: '/prompt/Professional Headshot Studio.jpeg',
   },
   {
@@ -162,7 +207,7 @@ export const prompts: PromptData[] = [
     title: 'E-commerce White Background',
     description: 'Clean white background product shots optimized for online retail',
     prompt: 'Create a clean white background product shot perfect for e-commerce. Remove all background elements and replace with pure white. Add subtle drop shadow for depth. Ensure the product is well-lit with even lighting and no harsh shadows. Optimize for online display with crisp, clear details.',
-    category: 'ecommerce',
+    tags: ['ecommerce', 'product', 'white-background', 'studio', 'minimal'],
     previewImage: '/prompt/product-minimal.jpg',
   },
   {
@@ -171,7 +216,7 @@ export const prompts: PromptData[] = [
     title: 'Cinematic Color Grading',
     description: 'Apply Hollywood-style color grading for dramatic visual impact',
     prompt: 'Apply cinematic color grading to this image. Use a color palette inspired by popular films - warm oranges and teals, or cool blues and purples. Enhance contrast and saturation strategically. Add film grain and subtle vignetting. Create a mood that matches the content while maintaining professional quality.',
-    category: 'creative',
+    tags: ['creative', 'cinematic', 'color-grading', 'film', 'dramatic'],
     previewImage: '/prompt/vintage-film.jpg',
   },
   {
@@ -180,7 +225,7 @@ export const prompts: PromptData[] = [
     title: 'Architectural Interior Design',
     description: 'Enhance interior spaces with modern architectural photography techniques',
     prompt: 'Enhance this interior space using architectural photography techniques. Improve lighting to showcase the space effectively. Adjust perspective to minimize distortion. Enhance materials and textures to look more premium. Add depth and dimension while maintaining the room\'s natural feel.',
-    category: 'design',
+    tags: ['design', 'interior', 'architecture', 'visualization', 'lighting'],
     previewImage: '/prompt/architectural-interior-design.webp',
   },
   {
@@ -189,7 +234,7 @@ export const prompts: PromptData[] = [
     title: 'Social Media Optimizer',
     description: 'Optimize images for different social media platforms and formats',
     prompt: 'Optimize this image for social media platforms. Adjust composition for square, vertical, or horizontal formats as needed. Enhance colors and contrast for mobile viewing. Add elements that encourage engagement while maintaining brand consistency. Ensure the image works well across different screen sizes and platforms.',
-    category: 'design',
+    tags: ['design', 'social-media', 'optimization', 'mobile', 'format'],
     previewImage: '/prompt/social-media-optimizer.webp',
   },
   {
@@ -198,7 +243,7 @@ export const prompts: PromptData[] = [
     title: 'Luxury Fashion Editorial',
     description: 'Create high-fashion editorial photography with dramatic styling',
     prompt: 'Transform this into a luxury fashion editorial shot. Use dramatic lighting with strong contrasts and shadows. Apply sophisticated color grading with rich, deep tones. Enhance textures and materials to look premium. Create a mood that conveys luxury and exclusivity while maintaining the model\'s natural beauty.',
-    category: 'photography',
+    tags: ['photography', 'fashion', 'editorial', 'luxury', 'cinematic'],
     previewImage: '/prompt/luxury-fashion-editorial.webp',
   },
   {
@@ -207,25 +252,26 @@ export const prompts: PromptData[] = [
     title: 'Product Lifestyle Integration',
     description: 'Place products in realistic lifestyle contexts for authentic marketing',
     prompt: 'Integrate this product into a realistic lifestyle setting. Place it naturally in a home or office environment where it would typically be used. Ensure proper lighting and shadows that match the environment. Make the integration look authentic and aspirational while keeping the product as the focal point.',
-    category: 'ecommerce',
+    tags: ['ecommerce', 'product', 'lifestyle', 'integration', 'marketing'],
     previewImage: '/prompt/Product Lifestyle Integration.jpg',
   },
-  {
+   {
     id: '22',
-    slug: 'family-crest',
-    title: 'family crest',
-    description: 'featuring a majestic dragon on a shield',
-    prompt: 'A highly detailed European family crest featuring a majestic dragon on a shield. The shield is metallic with intricate engravings and an ornate border. The dragon is fierce, depicted in a rampant pose with scales visible, symbolizing strength and heritage. The design is centered, symmetrical, and heraldic. 8k resolution, cinematic lighting, photorealistic texture, white background.',
-    category: 'creative',
-    previewImage: '/prompt/family-crest.webp',
+    slug: 'minimalist-product-showcase',
+    title: 'Minimalist Product Showcase',
+    description: 'Create clean, minimalist product photography with professional studio lighting',
+    prompt: 'Transform this product photo into a minimalist studio shot. Place the product on a clean white surface with subtle shadows. Use professional studio lighting to eliminate harsh shadows while maintaining product definition. Add a gradient background that transitions from white to light gray. Ensure the product is the clear focal point.',
+    tags: ['ecommerce', 'product', 'minimalist', 'white-background', 'studio'],
+    previewImage: '/prompt/minimalist-product-showcase.webp',
   },
+
   {
     id: '23',
     slug: 'brand-identity-visualizer',
     title: 'Brand Identity Visualizer',
     description: 'Create cohesive brand visual identity across different applications',
     prompt: 'Apply consistent brand identity to this image. Use the brand\'s color palette, typography style, and visual language. Ensure the image fits the brand\'s personality and target audience. Create visual consistency that reinforces brand recognition while making the content engaging and professional.',
-    category: 'design',
+    tags: ['design', 'branding', 'identity', 'visual', 'consistency'],
     previewImage: '/prompt/brand-identity-visualizer.jpg',
   },
   {
@@ -234,7 +280,7 @@ export const prompts: PromptData[] = [
     title: 'Nano Banana API Integration',
     description: 'Optimize prompts for Nano Banana API with technical precision',
     prompt: 'Optimize this prompt for Nano Banana API integration. Structure the request for maximum efficiency and quality output. Include specific parameters for consistency, style, and technical requirements. Ensure the prompt works well with automated workflows and batch processing while maintaining high-quality results.',
-    category: 'character',
+    tags: ['character', 'api', 'technical', 'automation', 'workflow'],
     previewImage: '/tutorials/api-integration.jpg',
   },
   {
@@ -243,17 +289,17 @@ export const prompts: PromptData[] = [
     title: '3D Figurine Model Generator',
     description: 'Transform images into detailed 3D figurine models with realistic textures and precise modeling',
     prompt: 'Transform this image into a highly detailed 3D figurine model. Create a realistic three-dimensional representation with accurate proportions and anatomical details. Apply high-quality textures with realistic material properties such as skin, fabric, metal, or plastic as appropriate. Add precise surface details like fingerprints, fabric weave, or metallic scratches. Ensure proper lighting and shadows that highlight the 3D form and depth. Create a model that appears ready for 3D printing with realistic coloration and surface finishing. Maintain the character\'s essential features and expressions while adapting them to a three-dimensional format.',
-    category: 'character',
+    tags: ['character', '3d', 'figurine', 'realistic', 'detailed'],
     previewImage: '/prompt/3d-girl.webp',
   },
   {
     id: '26',
-    slug: 'nano-banana-model-generator',
-    title: 'Nano Banana Model Generator',
+    slug: '3d-models',
+    title: '3D models Generator',
     description: 'Create 3D models using the Nano Banana model with precision and detail',
-    prompt: 'Using the nano-banana model, create a 1/7 scale commercialized figurine of the characters in the picture, in a realistic style, in a real environment. The figurine is placed on a computer desk.The figurine has a round transparent acrylic base, with no text on the base. The content on the computer screen is the Zbrush modeling process of this figurine. Next to the computer screen is a BANDAI-style toy packaging box printed with the originalUsing the nano-banana model, create a 1/7 scale commercialized figurine of the characters in the picture, in a realistic style, in a real environment. The figurine is placed on a computer desk.The figurine has a round transparent acrylic base, with no text on the base. The content on the computer screen is the Zbrush modeling process of this figurine. Next to the computer screen is a BANDAI-style toy packaging box printed with the original.',
-    category: 'character',
-    previewImage: '/prompt/3d girl.jpg',
+    prompt: 'create a 1/7 scale commercialized figurine of the characters in the picture, in a realistic style, in a real environment. The figurine is placed on a computer desk.The figurine has a round transparent acrylic base, with no text on the base. The content on the computer screen is the Zbrush modeling process of this figurine. Next to the computer screen is a BANDAI-style toy packaging box printed with the originalUsing the nano-banana model, create a 1/7 scale commercialized figurine of the characters in the picture, in a realistic style, in a real environment. The figurine is placed on a computer desk.The figurine has a round transparent acrylic base, with no text on the base. The content on the computer screen is the Zbrush modeling process of this figurine. Next to the computer screen is a BANDAI-style toy packaging box printed with the original.',
+    tags: ['character', '3d', 'figurine', 'realistic', 'product'],
+    previewImage: '/prompt/3D-models.webp',
   },
   {
     id: '27',
@@ -261,17 +307,17 @@ export const prompts: PromptData[] = [
     title: 'Neon Rain Cyberpunk Vista',
     description: 'Render a rain-soaked mega-city skyline filled with holograms and neon signage',
     prompt: 'Create an ultra-detailed cyberpunk cityscape at midnight. Show elevated maglev trains, holographic billboards, and reflective puddles on the streets, all glowing in saturated magenta, cyan, and amber neon. Rain streaks should catch rim light while dense atmospheric fog adds depth between the skyscrapers. Compose the scene from a rooftop toward a bustling intersection using cinematic widescreen framing and volumetric lighting.',
-    category: 'creative',
+    tags: ['creative', 'cyberpunk', 'neon', 'cityscape', 'cinematic'],
     previewImage: '/prompt/neon-rain-cyberpunk-vista.jpg',
   },
   {
     id: '28',
-    slug: 'ghibli-forest-guardian',
-    title: 'Ghibli Forest Guardian',
-    description: 'Illustrate a whimsical forest spirit guiding children through a glowing woodland',
-    prompt: 'Illustrate a hand-painted scene inspired by Studio Ghibli. Depict a gentle forest spirit with soft fur and luminescent markings walking beside two curious children down a mossy path. Surround them with oversized ferns, floating fireflies, and dappled golden hour light filtering through cedar trees. Use pastel palettes, watercolor textures, and subtle film grain to evoke warmth and nostalgia.',
-    category: 'creative',
-    previewImage: '/prompt/Ghibli-Forest-Guardian.webp',
+    slug: 'artistic-sketch-converter',
+    title: 'Artistic Sketch Converter',
+    description: 'Convert photos into detailed pencil sketches with realistic shading and texture',
+    prompt: 'Convert this photograph into a detailed pencil sketch artwork. Use realistic graphite pencil techniques with varying line weights and cross-hatching for shadows. Maintain the original composition while emphasizing contrast and detail. Create the appearance of being drawn on textured paper with subtle paper grain visible.',
+    tags: ['creative', 'art', 'sketch', 'pencil', 'vintage'],
+    previewImage: '/prompt/artistic-sketch-converter.webp',
   },
   {
     id: '29',
@@ -279,7 +325,7 @@ export const prompts: PromptData[] = [
     title: 'Orbital Habitat Concept',
     description: 'Design a futuristic space station concourse with panoramic starlit views',
     prompt: 'Design high-end concept art of a torus-shaped orbital habitat interior. Feature a wide concourse with transparent aluminum panels revealing Earth below, modular hydroponic gardens, and floating digital signage. Populate the scene with scientists in adaptive suits and autonomous drones. Use cool cyan and warm amber lighting accents, sharp reflections, and cinematic depth of field to emphasize scale.',
-    category: 'design',
+    tags: ['design', 'sci-fi', 'space', 'concept-art', 'futuristic'],
     previewImage: '/prompt/orbital-habitat-concept.webp',
   },
   {
@@ -288,7 +334,7 @@ export const prompts: PromptData[] = [
     title: 'Pastel Watercolor Horizon',
     description: 'Paint a tranquil sunrise over layered mountains with flowing watercolor strokes',
     prompt: 'Generate a loose watercolor landscape of misty mountains at sunrise. Blend soft pastel washes of peach, lavender, and teal to depict receding peaks, with delicate wet-on-wet transitions. Add a reflective lake in the foreground catching the dawn glow and sparse pine silhouettes painted with dry-brush texture. Preserve paper grain, subtle bloom effects, and hand-drawn pencil outlines.',
-    category: 'creative',
+    tags: ['creative', 'watercolor', 'landscape', 'pastel', 'artistic'],
     previewImage: '/prompt/pastel-watercolor-horizon.webp',
   },
   {
@@ -297,7 +343,7 @@ export const prompts: PromptData[] = [
     title: 'Noir Detective Alley',
     description: 'Capture a film-noir detective portrait lit by a lone streetlamp in rainy alleyway',
     prompt: 'Photograph a noir detective leaning against a brick wall in a rain-soaked alley circa 1948. Illuminate the scene with a single tungsten streetlamp creating dramatic chiaroscuro and long shadows. Add glistening cobblestones, swirling cigarette smoke, and blurred headlights in the distance. Render in high-contrast monochrome with cinematic grain, shallow depth of field, and subtle lens flare.',
-    category: 'photography',
+    tags: ['photography', 'noir', 'portrait', 'vintage', 'cinematic'],
     previewImage: '/prompt/noir-detective-alley.webp',
   },
   {
@@ -306,7 +352,7 @@ export const prompts: PromptData[] = [
     title: 'Dreamscape of Melting Skies',
     description: 'Craft a surreal landscape with melting architecture and floating horizons inspired by Dalí',
     prompt: 'Construct a surreal dreamscape inspired by Salvador Dalí. Show elongated shadows across a barren desert where marble buildings melt into cascading ribbons that dissolve into the sky. Include giant pocket watches draped over crystal obelisks, a calm reflective pool mirroring a fragmented moon, and distant figures with elongated limbs. Use hyperreal detail, luminous gradients, and impossible perspective shifts.',
-    category: 'creative',
+    tags: ['creative', 'surreal', 'dali', 'abstract', 'dreamscape'],
     previewImage: '/prompt/dreamscape-melting-skies.jpg',
   },
   {
@@ -315,7 +361,7 @@ export const prompts: PromptData[] = [
     title: 'Cinematic Portrait Spotlight',
     description: 'Produce a dramatic character portrait with golden rim light and soft haze',
     prompt: 'Capture a cinematic head-and-shoulders portrait of a heroine standing in a hazy warehouse. Employ golden rim lighting from behind, a cool teal key light from the front, and suspended dust particles caught in the beam. Render realistic skin texture, wet hair strands, and light flares from anamorphic lenses. Maintain shallow depth of field and color grading reminiscent of modern action films.',
-    category: 'photography',
+    tags: ['photography', 'portrait', 'cinematic', 'lighting', 'dramatic'],
     previewImage: '/prompt/cinematic-portrait-spotlight.webp',
   },
   {
@@ -324,7 +370,7 @@ export const prompts: PromptData[] = [
     title: 'Mecha Hangar Briefing',
     description: 'Visualize towering mechs inside an industrial hangar surrounded by engineers',
     prompt: 'Illustrate a colossal mech hangar during a pre-battle briefing. Show two 40-meter tall mechs illuminated by overhead gantry lights, surrounded by technicians, holographic tactical displays, and refueling drones. Integrate layered depth with atmospheric fog, reflective metal flooring, and sparks from welding teams. Aim for cinematic composition and high-detail hard-surface rendering.',
-    category: 'design',
+    tags: ['design', 'mecha', 'sci-fi', 'industrial', 'detailed'],
     previewImage: '/prompt/mecha-hangar-briefing.webp',
   },
   {
@@ -333,7 +379,7 @@ export const prompts: PromptData[] = [
     title: 'Midnight Glass Tower Render',
     description: 'Showcase a luxury waterfront skyscraper with reflective pools and dynamic lighting',
     prompt: 'Create an architectural visualization of a glass-clad luxury tower at midnight beside a calm marina. Feature cascading terraces, illuminated infinity pools, and sculptural landscaping lit by programmable LEDs. Include long-exposure light trails from passing vehicles and subtle ripples reflecting the skyline. Emphasize photorealistic materials, global illumination, and cinematic contrast.',
-    category: 'design',
+    tags: ['design', 'architecture', 'visualization', 'luxury', 'night'],
     previewImage: '/prompt/midnight-glass-tower.webp',
   },
   {
@@ -342,16 +388,16 @@ export const prompts: PromptData[] = [
     title: 'Tropical Product Splash',
     description: 'Stage a premium beverage product shot with tropical fruits and dynamic water splash',
     prompt: 'Photograph a premium beverage bottle mid-air with an energetic water splash and tropical fruits. Use high-speed flash to freeze motion, backlight the droplets for sparkle, and place sliced passion fruit, pineapple, and mint around the bottle. Set the scene against a turquoise gradient backdrop with condensation beads on glass, ensuring crisp highlights and commercial polish.',
-    category: 'ecommerce',
+    tags: ['ecommerce', 'product', 'food', 'splash', 'tropical'],
     previewImage: '/prompt/tropical-product-splash.webp',
-  }, 
+  },
   {
     id: '37',
     slug: 'abstract-digital-art',
     title: 'Abstract Digital Art',
     description: 'Create stunning abstract digital artwork from photographs',
     prompt: 'Transform this image into abstract digital art. Use bold colors, geometric shapes, and flowing forms. Apply artistic filters and effects that create visual interest. Maintain some recognizable elements while emphasizing abstract composition. Create a piece that works as both art and design element.',
-    category: 'creative',
+    tags: ['creative', 'abstract', 'digital', 'art', 'geometric'],
     previewImage: '/prompt/creative-abstract.jpg',
   },{
     id: '38',
@@ -359,7 +405,7 @@ export const prompts: PromptData[] = [
     title: 'AI Portrait Enhancer',
     description: 'Transform ordinary portraits into professional headshots with enhanced lighting and composition',
     prompt: 'Transform this portrait into a professional studio headshot. Enhance the lighting to create soft, even illumination that flatters the subject. Add subtle depth of field with a blurred background. Improve skin texture naturally while maintaining authentic features. Use warm, professional lighting similar to high-end portrait photography.',
-    category: 'photography',
+    tags: ['photography', 'portrait', 'enhancement', 'headshot', 'studio'],
     previewImage: '/prompt/portrait-enhanced.jpg',
   },
   {
@@ -368,7 +414,7 @@ export const prompts: PromptData[] = [
     title: 'Vintage Film Effect Generator',
     description: 'Add authentic vintage film aesthetics to modern photos with grain and color grading',
     prompt: 'Apply a vintage 1970s film aesthetic to this image. Add authentic film grain, slightly faded colors with a warm undertone, and subtle light leaks around the edges. Create the look of photos taken with a classic 35mm camera, with slightly overexposed highlights and rich, muted tones.',
-    category: 'creative',
+    tags: ['creative', 'vintage', 'film', 'retro', 'color-grading'],
     previewImage: '/prompt/Vintage film effect.jpeg',
   }
 

@@ -56,15 +56,15 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 tech-glow tech-gradient px-4 py-2 rounded-full text-sm font-medium text-white mb-6 tech-float">
             <Sparkles className="h-4 w-4" />
-            Nano Banana AI Prompt Library
+            Explore the Prompt Library and use our prompts
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
-            10x{' '}
+            Unleash {' '}
             <span className="tech-text">
-              creativity unleashed
+              10x creativity
             </span>{' '}
-            ideas turned into real life 
+            Seamlessly transform ideas into images
           </h1>
         </div>
       </div>
