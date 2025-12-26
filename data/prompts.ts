@@ -243,7 +243,7 @@ export const prompts: PromptData[] = [
     description: 'Transform images into detailed 3D figurine models with realistic textures and precise modeling',
     prompt: 'Transform this image into a highly detailed 3D figurine model. Create a realistic three-dimensional representation with accurate proportions and anatomical details. Apply high-quality textures with realistic material properties such as skin, fabric, metal, or plastic as appropriate. Add precise surface details like fingerprints, fabric weave, or metallic scratches. Ensure proper lighting and shadows that highlight the 3D form and depth. Create a model that appears ready for 3D printing with realistic coloration and surface finishing. Maintain the character\'s essential features and expressions while adapting them to a three-dimensional format.',
     category: 'character',
-    previewImage: '/prompt/3d girl.jpg',
+    previewImage: '/prompt/3d-girl.webp',
   },
   {
     id: '26',
