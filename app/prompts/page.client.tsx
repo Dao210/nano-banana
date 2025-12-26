@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState, useCallback, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { Header } from "@/components/header"
 import Hero from "./Hero"
 import CategoryFilter from "./CategoryFilter"
@@ -42,9 +43,15 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 const PromptPage = () => {
+  const pathname = usePathname()
   const [activeTag, setActiveTag] = useState("all")
   const [query, setQuery] = useState("")
   const [sortBy, setSortBy] = useState("default")
+
+  // Determine current path for SEO and navigation
+  const isRootPath = pathname === "/"
+  const currentPath = isRootPath ? "/" : "/prompts"
+  const seoUrl = isRootPath ? "https://nanobanana.fans/" : "https://nanobanana.fans/prompts"
 
   // Debounce search query for 300ms to reduce re-renders
   const debouncedQuery = useDebounce(query, 300)
@@ -107,21 +114,25 @@ const PromptPage = () => {
         data={{
           title: "Nano Banana Prompts - AI Image Editing Prompt Library",
           description: "Browse our comprehensive collection of Nano Banana AI prompts. Find the perfect prompts for character consistency, style transfer, and advanced image editing techniques.",
-          url: "https://nanobanana.fans/prompts",
+          url: seoUrl,
           image: "https://nanobanana.fans/og-image.jpg",
           keywords: ["Nano Banana prompts", "AI image editing prompts", "Google Gemini prompts", "character consistency prompts", "style transfer prompts"],
         }}
       />
-      
+
       <BreadcrumbSchema
-        items={[
-          { name: "Home", url: "https://nanobanana.fans/" },
-          { name: "Prompts", url: "https://nanobanana.fans/prompts" }
-        ]}
+        items={
+          isRootPath
+            ? [{ name: "Home", url: "https://nanobanana.fans/" }]
+            : [
+                { name: "Home", url: "https://nanobanana.fans/" },
+                { name: "Prompts", url: "https://nanobanana.fans/prompts" }
+              ]
+        }
       />
-      
+
       <PromptsSchema />
-      <Header currentPath="/prompts" />
+      <Header currentPath={currentPath} />
       <main>
         <Hero />
 

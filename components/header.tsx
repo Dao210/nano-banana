@@ -19,12 +19,6 @@ function Header({ currentPath = "/" }: HeaderProps) {
         {/* 左侧导航，与内容区左对齐 */}
         <nav className="hidden md:flex items-center space-x-6 flex-1 min-w-0">
           <Link
-            href="/"
-            className={`text-sm font-medium transition-colors ${isActive("/") ? "text-primary" : "hover:text-primary"}`}
-          >
-            Home
-          </Link>
-          <Link
             href="/prompts"
             className={`text-sm font-medium transition-colors ${
               isActive("/prompts") || currentPath?.startsWith("/prompts") ? "text-primary" : "hover:text-primary"
