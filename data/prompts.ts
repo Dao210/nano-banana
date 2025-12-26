@@ -45,7 +45,7 @@ export const prompts: PromptData[] = [
     description: 'Create clean, minimalist product photography with professional studio lighting',
     prompt: 'Transform this product photo into a minimalist studio shot. Place the product on a clean white surface with subtle shadows. Use professional studio lighting to eliminate harsh shadows while maintaining product definition. Add a gradient background that transitions from white to light gray. Ensure the product is the clear focal point.',
     category: 'ecommerce',
-    previewImage: '/prompt/product-minimal.jpg',
+    previewImage: '/prompt/minimalist-product-showcase.webp',
   },
   {
     id: '4',
