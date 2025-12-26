@@ -139,7 +139,7 @@ const PromptCardPreview = ({
               ) : (
                 <>
                   <Copy className="h-3 w-3 mr-1" />
-                  Copy
+                  Copy Prompt
                 </>
               )}
             </Button>
