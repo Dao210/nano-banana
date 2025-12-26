@@ -1,13 +1,17 @@
+'use client';
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Copy, Check, Eye } from 'lucide-react';
+import { Copy, Check, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface PromptCardProps {
   id: string;
+  slug: string;
   title: string;
   description: string;
   prompt: string;
@@ -16,12 +20,14 @@ interface PromptCardProps {
   originalImages?: string[];
 }
 
-const PromptCard = ({ title, description, prompt, category, previewImage, originalImages }: PromptCardProps) => {
+const PromptCard = ({ id, slug, title, description, prompt, category, previewImage, originalImages }: PromptCardProps) => {
   const [isCopied, setIsCopied] = useState(false);
-  const [showFullPrompt, setShowFullPrompt] = useState(false);
   const { toast } = useToast();
 
-  const handleCopyPrompt = async () => {
+  const handleCopyPrompt = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     try {
       await navigator.clipboard.writeText(prompt);
       setIsCopied(true);
@@ -39,95 +45,70 @@ const PromptCard = ({ title, description, prompt, category, previewImage, origin
     }
   };
 
-  const truncatedPrompt = prompt.length > 150 ? prompt.substring(0, 150) + "..." : prompt;
-
   return (
-    <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 tech-card hover:scale-105">
-      <div className="relative overflow-hidden">
-        <Image
-          src={previewImage}
-          alt={title}
-          width={400}
-          height={192}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 tech-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-        <Badge className="absolute top-3 left-3 tech-glow tech-gradient text-white border-0">
-          {category}
-        </Badge>
-      </div>
-      
-      <CardHeader className="pb-3">
-        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {description}
-        </p>
-      </CardHeader>
-      
-      <CardContent className="pt-0">
-        {originalImages && originalImages.length > 0 && (
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-foreground mb-2">Original Images</h4>
-            <div className="flex gap-2">
-              {originalImages.map((image, index) => (
-                <Image
-                  key={index}
-                  src={image}
-                  alt={`Original ${index + 1}`}
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 object-cover rounded border border-border hover:scale-110 transition-transform"
-                />
-              ))}
-            </div>
-          </div>
-        )}
-        
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h4 className="text-sm font-medium text-foreground">Nano AI Prompt</h4>
+    <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 tech-card cursor-pointer p-0">
+      <Link href={`/prompts/${slug}`} className="block">
+        {/* Image Container */}
+        <div className="relative overflow-hidden aspect-video">
+          <Image
+            src={previewImage}
+            alt={title}
+            width={640}
+            height={360}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+
+          {/* Category Badge */}
+          <Badge className="absolute top-3 left-3 tech-glow tech-gradient text-white border-0">
+            {category}
+          </Badge>
+        </div>
+
+        {/* Content Section */}
+        <div className="p-4 pb-3">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mt-1.5 line-clamp-2">
+            {description}
+          </p>
+        </div>
+
+        {/* Bottom Action Buttons - Slide up on hover */}
+        <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+          <div className="flex gap-3 px-4 pb-4">
             <Button
-              variant="ghost"
+              onClick={handleCopyPrompt}
               size="sm"
-              onClick={() => setShowFullPrompt(!showFullPrompt)}
-              className="text-xs tech-gradient tech-text hover:bg-transparent"
+              className={`flex-1 h-10 font-medium transition-all duration-300 ${
+                isCopied
+                  ? 'bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/30'
+                  : 'bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 hover:from-cyan-600 hover:via-blue-600 hover:to-indigo-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] border border-blue-400/30 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:scale-[1.02]'
+              }`}
             >
-              <Eye className="h-3 w-3 mr-1" />
-              {showFullPrompt ? 'Show Less' : 'Show More'}
+              {isCopied ? (
+                <>
+                  <Check className="h-4 w-4 mr-2" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy Prompt
+                </>
+              )}
+            </Button>
+
+            <Button
+              size="sm"
+              className="flex-1 h-10 font-medium bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 hover:from-violet-600 hover:via-purple-600 hover:to-fuchsia-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] border border-purple-400/30 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-[1.02] transition-all duration-300"
+            >
+              <ExternalLink className="h-4 w-4 mr-2" />
+              View Details
             </Button>
           </div>
-          
-          <div className="glass rounded-lg p-3 border border-border/50">
-            <p className="text-sm text-muted-foreground font-mono leading-relaxed">
-              {showFullPrompt ? prompt : truncatedPrompt}
-            </p>
-          </div>
-          
-          <Button
-            onClick={handleCopyPrompt}
-            className={`w-full transition-all duration-300 tech-button ${
-              isCopied
-                ? 'tech-gradient text-white'
-                : 'tech-gradient-secondary hover:scale-105'
-            }`}
-            size="sm"
-          >
-            {isCopied ? (
-              <>
-                <Check className="h-4 w-4 mr-2" />
-                Copied!
-              </>
-            ) : (
-              <>
-                <Copy className="h-4 w-4 mr-2" />
-                Copy Prompt
-              </>
-            )}
-          </Button>
         </div>
-      </CardContent>
+      </Link>
     </Card>
   );
 };

@@ -59,59 +59,13 @@ const Hero = () => {
             Nano Banana AI Prompt Library
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Free{' '}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
+            10x{' '}
             <span className="tech-text">
-              Nano Banana Prompts
+              creativity unleashed
             </span>{' '}
-            for AI Image Editing
+            ideas turned into real life 
           </h1>
-          
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Discover 36+ curated Nano Banana AI prompts for image editing, character consistency, product photography, and creative design. 
-            Perfect for beginners and professionals looking to master AI image generation.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 tech-button tech-glow hover:scale-105 transition-transform">
-              Explore Prompts
-              <ArrowRight className="mr-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="glass tech-glow hover:scale-105 transition-transform">
-              Learn More
-            </Button>
-          </div>
-          
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center justify-center">
-            <div className="tech-card tech-float p-4 rounded-lg border bg-card text-card-foreground shadow-sm" style={{ animationDelay: '0s' }}>
-              <div className="flex justify-center mb-2">
-                <Code className="h-6 w-6 tech-text" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold tech-text">36+</div>
-              <div className="text-sm text-muted-foreground">Nano Banana Prompts</div>
-            </div>
-            <div className="tech-card tech-float p-4 rounded-lg border bg-card text-card-foreground shadow-sm" style={{ animationDelay: '0.2s' }}>
-              <div className="flex justify-center mb-2">
-                <Palette className="h-6 w-6 tech-text" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold tech-text">6</div>
-              <div className="text-sm text-muted-foreground">Categories</div>
-            </div>
-            <div className="tech-card tech-float p-4 rounded-lg border bg-card text-card-foreground shadow-sm" style={{ animationDelay: '0.4s' }}>
-              <div className="flex justify-center mb-2">
-                <Zap className="h-6 w-6 tech-text" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold tech-text">100%</div>
-              <div className="text-sm text-muted-foreground">Free Access</div>
-            </div>
-            <div className="tech-card tech-float p-4 rounded-lg border bg-card text-card-foreground shadow-sm" style={{ animationDelay: '0.6s' }}>
-              <div className="flex justify-center mb-2">
-                <Sparkles className="h-6 w-6 tech-text" />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold tech-text">Expert</div>
-              <div className="text-sm text-muted-foreground">Crafted</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'character consistency prompts',
     'product photography AI',
     'creative AI prompts',
-    'free AI prompts',
+    'awsome AI prompts',
     'Nano Banana tutorial',
     'AI image editing'
   ],

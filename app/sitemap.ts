@@ -1,30 +1,7 @@
 import type { MetadataRoute } from "next"
 import { glob } from "fs/promises"
 import path from "path"
-
-// List of prompt categories from the data
-const promptCategories = [
-  "digital-art",
-  "photography",
-  "character-design",
-  "product-photography",
-  "architectural-visualization",
-  "fashion-design",
-  "concept-art",
-  "logo-design",
-  "portrait-enhancement",
-  "vintage-effects",
-  "3d-modeling",
-  "abstract-art",
-  "brand-identity",
-  "food-photography",
-  "seasonal-effects",
-  "social-media",
-  "sketch-conversion",
-  "interior-design",
-  "luxury-branding",
-  "neon-effects"
-]
+import { prompts } from "@/data/prompts"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://nanobanana.fans"
@@ -140,45 +117,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })))
   }
 
-  // Generate prompt category pages
-  const promptCategoryPages = promptCategories.map((category) => ({
-    url: `${baseUrl}/prompts?category=${encodeURIComponent(category)}`,
+  // Generate prompt detail pages using real data from prompts.ts
+  const promptDetailPages = prompts.map((prompt) => ({
+    url: `${baseUrl}/prompts/${prompt.slug}`,
     lastModified: currentDate,
     changeFrequency: "weekly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }))
-
-  // Generate prompt detail pages (example structure - adjust based on actual implementation)
-  const promptDetailPages = []
-  try {
-    // This would typically come from your data source
-    // For now, we'll generate some example URLs
-    const promptSlugs = [
-      "digital-art-creation",
-      "product-photography-enhancement",
-      "character-design-consistency",
-      "architectural-visualization",
-      "fashion-design-styling",
-      "logo-design-generation",
-      "portrait-enhancement-techniques",
-      "vintage-effects-application"
-    ]
-
-    promptDetailPages.push(...promptSlugs.map((slug) => ({
-      url: `${baseUrl}/prompts/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    })))
-  } catch (error) {
-    console.error("Error generating prompt detail sitemap:", error)
-  }
 
   // Combine all pages
   const allPages = [
     ...staticPages,
     ...tutorialPages,
-    ...promptCategoryPages,
     ...promptDetailPages
   ]
 

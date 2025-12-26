@@ -1,0 +1,126 @@
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { Copy, Check, Eye } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+
+interface PromptCardPreviewProps {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  prompt: string;
+  category: string;
+  previewImage: string;
+}
+
+const PromptCardPreview = ({
+  id,
+  slug,
+  title,
+  description,
+  prompt,
+  category,
+  previewImage,
+}: PromptCardPreviewProps) => {
+  const [isCopied, setIsCopied] = useState(false);
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleCopy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setIsCopied(true);
+      toast({
+        title: "Copied!",
+        description: "Prompt copied to clipboard.",
+      });
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (error) {
+      toast({
+        title: "Failed to copy",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleViewDetails = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/prompts/${slug}`);
+  };
+
+  return (
+    <Link href={`/prompts/${slug}`} className="block">
+      <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 tech-card hover:scale-105 cursor-pointer pt-0 pb-0 h-full flex flex-col">
+        {/* 预览图区域 */}
+        <div className="relative overflow-hidden aspect-[4/3]">
+          <Image
+            src={previewImage}
+            alt={title}
+            width={640}
+            height={480}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 tech-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+          <Badge className="absolute top-3 left-3 tech-glow tech-gradient text-white border-0">
+            {category}
+          </Badge>
+        </div>
+
+        {/* 标题和描述 */}
+        <CardHeader className="pb-16 px-6 flex-shrink-0">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            {description}
+          </p>
+        </CardHeader>
+
+        {/* Hover 时显示的操作按钮 */}
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="flex gap-2 bg-background/90 backdrop-blur-sm border border-border/50 rounded-lg p-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleCopy}
+              className="flex-1 tech-gradient-secondary"
+            >
+              {isCopied ? (
+                <>
+                  <Check className="h-3 w-3 mr-1" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3 w-3 mr-1" />
+                  Copy
+                </>
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleViewDetails}
+              className="flex-1 tech-gradient-secondary"
+            >
+              <Eye className="h-3 w-3 mr-1" />
+              Details
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </Link>
+  );
+};
+
+export default PromptCardPreview;

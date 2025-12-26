@@ -14,10 +14,10 @@ function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <div className="h-8 w-8 flex items-center justify-center">
-                <Image src="/favicon.ico" alt="Logo" width={32} height={32} className="h-8 w-8 text-white" />
+                <Image src="/banana.webp" alt="Logo" width={32} height={32} className="h-8 w-8 text-white" />
               </div>
               <span className="font-bold text-xl text-white font-[family-name:var(--font-space-grotesk)]">
-                Nano Banana
+                NanoBanana.fans
               </span>
             </Link>
             <p className="text-slate-400 text-sm mb-4 text-pretty">

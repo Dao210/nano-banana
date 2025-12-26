@@ -65,7 +65,7 @@ function Header({ currentPath = "/" }: HeaderProps) {
               <Image src="/banana.webp" alt="Logo" width={32} height={32} className="h-8 w-8" />
             </div>
             <span className="font-bold text-xl text-primary font-[family-name:var(--font-space-grotesk)]">
-              Nano Banana
+              NanoBanana.Fans
             </span>
           </Link>
         </div>

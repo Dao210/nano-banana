@@ -4,6 +4,7 @@ import { Space_Grotesk, DM_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import Script from "next/script"
+import { WebVitalsInit } from "@/components/WebVitalsInit"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -163,21 +164,7 @@ export default function RootLayout({
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
-        <Script
-          id="web-vitals-init"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined') {
-                setTimeout(() => {
-                  import('/lib/web-vitals.js').then(({ initWebVitals }) => {
-                    initWebVitals();
-                  });
-                }, 1000);
-              }
-            `
-          }}
-        />
+        <WebVitalsInit />
       </body>
     </html>
   )
