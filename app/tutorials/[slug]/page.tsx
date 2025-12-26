@@ -21,6 +21,8 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { SchemaOrg, BreadcrumbSchema } from "@/components/seo-schema"
+import { getTutorialMetadata } from "@/data/tutorials"
+import { notFound } from "next/navigation"
 
 // This would typically come from a database or CMS
 const tutorialData = {
@@ -174,27 +176,48 @@ Continue your learning journey with our intermediate tutorials on character cons
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
+  const tutorial = getTutorialMetadata(slug)
 
-  // In a real app, you'd fetch the tutorial data based on the slug
+  if (!tutorial) {
+    return {
+      title: 'Tutorial Not Found | Nano Banana',
+    }
+  }
+
+  const baseUrl = 'https://nanobanana.fans'
+  const tutorialUrl = `${baseUrl}/tutorials/${slug}`
+
   return {
-    title: `${tutorialData.title} | Nano Banana Tutorials`,
-    description: tutorialData.description,
-    keywords: `${tutorialData.tags.join(", ")}, Nano Banana, AI image editing, Google Gemini`,
-    authors: [{ name: tutorialData.author.name }],
+    title: tutorial.title,
+    description: tutorial.description,
+    keywords: tutorial.keywords.join(', '),
+    authors: [{ name: 'Nano Banana Tutorial Team' }],
+    alternates: {
+      canonical: tutorialUrl,
+    },
     openGraph: {
-      title: tutorialData.title,
-      description: tutorialData.description,
-      type: "article",
-      publishedTime: tutorialData.publishedAt,
-      modifiedTime: tutorialData.updatedAt,
-      authors: [tutorialData.author.name],
-      tags: tutorialData.tags,
-      url: `https://nanobanana.fans/tutorials/${slug}`,
+      title: tutorial.title,
+      description: tutorial.description,
+      type: 'article',
+      publishedTime: '2024-01-01',
+      modifiedTime: tutorial.lastModified,
+      authors: ['Nano Banana Tutorial Team'],
+      tags: tutorial.keywords,
+      url: tutorialUrl,
+      images: tutorial.ogImage ? [
+        {
+          url: tutorial.ogImage,
+          width: 1200,
+          height: 630,
+          alt: tutorial.title,
+        }
+      ] : [],
     },
     twitter: {
-      card: "summary_large_image",
-      title: tutorialData.title,
-      description: tutorialData.description,
+      card: 'summary_large_image',
+      title: tutorial.title,
+      description: tutorial.description,
+      images: tutorial.ogImage ? [tutorial.ogImage] : [],
     },
   }
 }

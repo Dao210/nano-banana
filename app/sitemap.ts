@@ -2,125 +2,54 @@ import type { MetadataRoute } from "next"
 import { glob } from "fs/promises"
 import path from "path"
 import { prompts } from "@/data/prompts"
+import { staticPagesUpdates, tutorialPagesUpdates } from "@/data/content-updates"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://nanobanana.fans"
-  const currentDate = new Date()
 
-  // Static pages
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "daily" as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/prompts`,
-      lastModified: currentDate,
-      changeFrequency: "daily" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tutorials`,
-      lastModified: currentDate,
-      changeFrequency: "daily" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/community`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/figure-generate`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/article-generator-demo`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/search`,
-      lastModified: currentDate,
-      changeFrequency: "daily" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.3,
-    },
-  ]
+  // Static pages with actual lastModified dates from content-updates.ts
+  const staticPages = staticPagesUpdates.map((page) => ({
+    url: `${baseUrl}${page.url}`,
+    lastModified: page.lastModified,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }))
 
-  // Tutorial pages - dynamically generated from file system
-  const tutorialPages = []
-  try {
-    const tutorialsPath = path.join(process.cwd(), "app", "tutorials")
-    const tutorialFiles = glob(`${tutorialsPath}/*/page.tsx`)
+  // Tutorial pages with actual lastModified dates
+  const tutorialPages = tutorialPagesUpdates.map((page) => ({
+    url: `${baseUrl}${page.url}`,
+    lastModified: page.lastModified,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }))
 
-    for await (const file of tutorialFiles) {
-      const relativePath = path.relative(tutorialsPath, file)
-      const slug = path.dirname(relativePath)
-      
-      tutorialPages.push({
-        url: `${baseUrl}/tutorials/${slug}`,
-        lastModified: currentDate,
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      })
+  // Fallback: dynamically discover tutorial pages if needed
+  if (tutorialPages.length === 0) {
+    try {
+      const tutorialsPath = path.join(process.cwd(), "app", "tutorials")
+      const tutorialFiles = glob(`${tutorialsPath}/*/page.tsx`)
+
+      for await (const file of tutorialFiles) {
+        const relativePath = path.relative(tutorialsPath, file)
+        const slug = path.dirname(relativePath)
+
+        tutorialPages.push({
+          url: `${baseUrl}/tutorials/${slug}`,
+          lastModified: new Date().toISOString().split('T')[0], // Convert to YYYY-MM-DD format
+          changeFrequency: "weekly" as const,
+          priority: 0.8,
+        })
+      }
+    } catch (error) {
+      console.error("Error generating tutorial sitemap:", error)
     }
-  } catch (error) {
-    console.error("Error generating tutorial sitemap:", error)
-    // Fallback to hardcoded list
-    const tutorialSlugs = [
-      "getting-started",
-      "character-consistency",
-      "multi-turn-editing",
-      "building-cinematic-universes",
-      "product-photography-with-ai",
-      "api-integration",
-      "style-transfer-techniques",
-      "advanced-techniques",
-      "prompt-engineering"
-    ]
-
-    tutorialPages.push(...tutorialSlugs.map((slug) => ({
-      url: `${baseUrl}/tutorials/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    })))
   }
 
   // Generate prompt detail pages using real data from prompts.ts
+  // Use recent update date for prompts (last major update: 2024-12-26)
   const promptDetailPages = prompts.map((prompt) => ({
     url: `${baseUrl}/prompts/${prompt.slug}`,
-    lastModified: currentDate,
+    lastModified: "2024-12-26", // When prompts were last significantly updated
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }))

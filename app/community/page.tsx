@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "Join the Nano Banana Community to connect with fellow creators, share AI image editing tips, and stay updated with the latest trends. Collaborate, ask questions, and grow together.",
   keywords:
     "Nano Banana community, AI image editing forum, Google Gemini users, tutorials, tips, collaboration, discussion",
+  alternates: {
+    canonical: "https://nanobanana.fans/community",
+  },
   openGraph: {
     title: "Nano Banana Community - Connect, Share & Learn",
     description:

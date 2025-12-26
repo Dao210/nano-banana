@@ -33,11 +33,15 @@ export const metadata: Metadata = {
     "Browse our comprehensive collection of Nano Banana AI tutorials. From beginner guides to advanced techniques, master Google's revolutionary image editing technology.",
   keywords:
     "Nano Banana tutorials, AI image editing guides, Google Gemini tutorials, character consistency, multi-turn editing, image generation tutorials",
+  alternates: {
+    canonical: "https://nanobanana.fans/tutorials",
+  },
   openGraph: {
     title: "Nano Banana Tutorials - Complete Learning Library",
     description:
       "Browse our comprehensive collection of Nano Banana AI tutorials and master Google's revolutionary image editing technology.",
     type: "website",
+    url: "https://nanobanana.fans/tutorials",
   },
 }
 

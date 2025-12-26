@@ -7,10 +7,14 @@ export const metadata: Metadata = {
   title: "Contact Us - Nano Banana Tutorial Platform",
   description: "Get in touch with the Nano Banana tutorial team. Ask questions, suggest topics, or report issues.",
   keywords: ["contact", "support", "help", "Nano Banana", "AI image editing"],
+  alternates: {
+    canonical: "https://nanobanana.fans/contact",
+  },
   openGraph: {
     title: "Contact Us - Nano Banana Tutorial Platform",
     description: "Get in touch with the Nano Banana tutorial team. Ask questions, suggest topics, or report issues.",
     type: "website",
+    url: "https://nanobanana.fans/contact",
   },
 }
 

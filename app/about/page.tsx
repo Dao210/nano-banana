@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Discover Nano Banana Fans, the passionate community of creators mastering Google's revolutionary AI image editing technology. Join us to learn, share, and grow together.",
   keywords:
     "Nano Banana Fans, AI image editing community, Google Gemini users, Nano Banana tutorials, character consistency, multi-turn editing, creative AI",
+  alternates: {
+    canonical: "https://nanobanana.fans/about",
+  },
   openGraph: {
     title: "About Nano Banana Fans - Your AI Image Editing Community",
     description:

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description:
     "Find the perfect Nano Banana AI tutorial for your needs. Search through our comprehensive library of guides and techniques.",
   robots: "noindex, follow",
+  alternates: {
+    canonical: "https://nanobanana.fans/search",
+  },
 }
 
 const searchResults = [
