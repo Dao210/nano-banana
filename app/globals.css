@@ -386,16 +386,17 @@
     animation: none !important;
   }
 
-  /* 禁用过渡动画以提升性能 */
+  /* 优化而非完全禁用过渡动画 - 只禁用性能密集型的属性 */
   * {
-    transition-property: none !important;
+    transition-property: transform, box-shadow, filter !important;
   }
 
-  /* 保留必要的交互反馈 */
+  /* 保留按钮和链接的必要交互反馈 */
   button,
   a,
-  [role="button"] {
-    transition-property: opacity, background-color !important;
+  [role="button"],
+  .cursor-pointer {
+    transition-property: opacity, background-color, transform !important;
   }
 
   /* 简化霓虹效果 */

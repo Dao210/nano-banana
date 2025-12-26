@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 import { SchemaOrg, BreadcrumbSchema } from '@/components/seo-schema';
 
 interface PromptDetailClientProps {
@@ -430,6 +431,9 @@ export default function PromptDetailClient({
             </aside>
           </div>
         </div>
+
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   );

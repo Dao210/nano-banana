@@ -53,8 +53,9 @@ const PromptCardPreview = ({
   };
 
   const handleViewDetails = (e: React.MouseEvent) => {
-    e.preventDefault();
+    // 只阻止事件冒泡，不阻止默认行为，让外层 Link 也能正常工作
     e.stopPropagation();
+    // 使用 router.push 确保导航正常工作
     router.push(`/prompts/${slug}`);
   };
 
@@ -122,9 +123,9 @@ const PromptCardPreview = ({
           </p>
         </CardHeader>
 
-        {/* Hover 时显示的操作按钮 */}
-        <div className="absolute inset-x-0 bottom-0 px-6 pb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="flex gap-2 bg-background/90 backdrop-blur-sm border border-border/50 rounded-lg p-3">
+        {/* 操作按钮：桌面端 hover 显示，移动端始终可见 */}
+        <div className="absolute inset-x-0 bottom-0 px-4 pb-4 md:px-6 md:pb-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+          <div className="flex gap-1.5 md:gap-2 bg-background/90 backdrop-blur-sm border border-border/50 rounded-lg p-2 md:p-3">
             <Button
               variant="ghost"
               size="sm"
