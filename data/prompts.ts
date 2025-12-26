@@ -198,7 +198,7 @@ export const prompts: PromptData[] = [
     description: 'Create high-fashion editorial photography with dramatic styling',
     prompt: 'Transform this into a luxury fashion editorial shot. Use dramatic lighting with strong contrasts and shadows. Apply sophisticated color grading with rich, deep tones. Enhance textures and materials to look premium. Create a mood that conveys luxury and exclusivity while maintaining the model\'s natural beauty.',
     category: 'photography',
-    previewImage: '/prompt/Luxury Brand Aesthetic.jpg',
+    previewImage: '/prompt/luxury-fashion-editorial.webp',
   },
   {
     id: '21',
@@ -297,7 +297,7 @@ export const prompts: PromptData[] = [
     description: 'Capture a film-noir detective portrait lit by a lone streetlamp in rainy alleyway',
     prompt: 'Photograph a noir detective leaning against a brick wall in a rain-soaked alley circa 1948. Illuminate the scene with a single tungsten streetlamp creating dramatic chiaroscuro and long shadows. Add glistening cobblestones, swirling cigarette smoke, and blurred headlights in the distance. Render in high-contrast monochrome with cinematic grain, shallow depth of field, and subtle lens flare.',
     category: 'photography',
-    previewImage: '/prompt/noir-detective-alley.jpg',
+    previewImage: '/prompt/noir-detective-alley.webp',
   },
   {
     id: '32',
