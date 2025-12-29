@@ -130,6 +130,7 @@ const PromptCardPreview = ({
               variant="ghost"
               size="sm"
               onClick={handleCopy}
+              aria-label={`Copy prompt: ${title}`}
               className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-md hover:shadow-lg transition-all duration-200"
             >
               {isCopied ? (
@@ -148,6 +149,7 @@ const PromptCardPreview = ({
               variant="ghost"
               size="sm"
               onClick={handleViewDetails}
+              aria-label={`View details for: ${title}`}
               className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground font-medium shadow-md hover:shadow-lg transition-all duration-200"
             >
               <Eye className="h-3 w-3 mr-1" />

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import Script from "next/script"
 import { WebVitalsInit } from "@/components/WebVitalsInit"
+import { SkipLink } from "@/components/skip-link"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -162,6 +163,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+        <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
         <WebVitalsInit />

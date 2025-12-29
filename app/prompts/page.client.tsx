@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useCallback, useEffect } from "react"
+import { useMemo, useState, useCallback, useEffect, useTransition } from "react"
 import { usePathname } from "next/navigation"
 import { Header } from "@/components/header"
 import Hero from "./Hero"
@@ -9,7 +9,8 @@ import PromptGrid from "./PromptGrid"
 import { PromptsSchema } from "./schema"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Search, Loader2 } from "lucide-react"
 import { mainTags as baseMainTags, prompts as dataPrompts } from "@/data/prompts"
 import dynamic from 'next/dynamic'
 
@@ -27,7 +28,7 @@ const BreadcrumbSchema = dynamic(() => import("@/components/seo-schema").then(mo
 // 懒加载 Footer 组件以优化初始加载性能
 const Footer = dynamic(() => import("@/components/footer"), {
   ssr: true,
-  loading: () => <footer className="bg-slate-900 h-[400px]" /> // Placeholder with fixed height to prevent CLS
+  loading: () => <footer className="bg-slate-900 h-16" /> // Reduced placeholder height
 })
 
 // Custom debounce hook for search optimization
@@ -42,11 +43,16 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue
 }
 
+const ITEMS_PER_PAGE = 50
+const INITIAL_ITEMS = 50
+
 const PromptPage = () => {
   const pathname = usePathname()
   const [activeTag, setActiveTag] = useState("all")
   const [query, setQuery] = useState("")
   const [sortBy, setSortBy] = useState("default")
+  const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS)
+  const [isPending, startTransition] = useTransition()
 
   // Determine current path for SEO and navigation
   const isRootPath = pathname === "/"
@@ -106,6 +112,24 @@ const PromptPage = () => {
     return sorted
   }, [activeTag, debouncedQuery, sortBy])
 
+  // Reset visible count when filters change
+  useEffect(() => {
+    setVisibleCount(INITIAL_ITEMS)
+  }, [activeTag, debouncedQuery, sortBy])
+
+  // Get only visible prompts for rendering
+  const visiblePrompts = useMemo(() => {
+    return filteredPrompts.slice(0, visibleCount)
+  }, [filteredPrompts, visibleCount])
+
+  const hasMore = visibleCount < filteredPrompts.length
+
+  const loadMore = useCallback(() => {
+    startTransition(() => {
+      setVisibleCount(prev => Math.min(prev + ITEMS_PER_PAGE, filteredPrompts.length))
+    })
+  }, [filteredPrompts.length])
+
   return (
     <div className="min-h-screen bg-background">
       {/* SEO Schema Components */}
@@ -133,24 +157,25 @@ const PromptPage = () => {
 
       <PromptsSchema />
       <Header currentPath={currentPath} />
-      <main>
+      <main id="main-content">
         <Hero />
 
         {/* Search & Sort Bar */}
-        <section className="border-b bg-card/50">
+        <section className="border-b bg-card/50" aria-label="Search and filter prompts">
           <div className="container mx-auto max-w-6xl py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="relative w-full md:max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" aria-hidden="true" />
               <Input
                 placeholder="Search prompts, keywords, or text..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="pl-9"
+                aria-label="Search prompts"
               />
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-sm text-muted-foreground">Sort</span>
-              <Select value={sortBy} onValueChange={setSortBy}>
+              <span id="sort-label" className="text-sm text-muted-foreground">Sort</span>
+              <Select value={sortBy} onValueChange={setSortBy} aria-labelledby="sort-label">
                 <SelectTrigger className="w-40">
                   <SelectValue />
                 </SelectTrigger>
@@ -172,7 +197,29 @@ const PromptPage = () => {
         />
 
         {/* Grid */}
-        <PromptGrid prompts={filteredPrompts as any} />
+        <PromptGrid prompts={visiblePrompts as any} />
+
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="container mx-auto max-w-6xl py-8 flex justify-center">
+            <Button
+              onClick={loadMore}
+              disabled={isPending}
+              size="lg"
+              variant="outline"
+              className="min-w-[200px]"
+            >
+              {isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Loading...
+                </>
+              ) : (
+                `Load More (${filteredPrompts.length - visibleCount} remaining)`
+              )}
+            </Button>
+          </div>
+        )}
       </main>
       <Footer />
     </div>

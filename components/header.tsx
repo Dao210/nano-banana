@@ -76,7 +76,7 @@ function Header({ currentPath = "/" }: HeaderProps) {
           </div>
           <div className="sm:hidden">
             <SearchDialog>
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" aria-label="Open search dialog">
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
               </Button>
