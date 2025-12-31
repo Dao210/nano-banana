@@ -127,7 +127,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#164e63" />
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name='impact-site-verification' value='e0e82765-9e34-40d1-87f9-a10a6637245e' />
+        <meta name='impact-site-verification' content='e0e82765-9e34-40d1-87f9-a10a6637245e' />
         <link rel="canonical" href="https://nanobanana.fans" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
