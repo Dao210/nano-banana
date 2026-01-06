@@ -128,7 +128,7 @@ export const prompts: PromptData[] = [
     description: 'Change the season of landscape photos while maintaining natural realism',
     prompt: 'Transform this landscape to show it in a different season. If it\'s summer, add autumn colors to foliage, or winter snow coverage, or spring blossoms. Adjust lighting, sky conditions, and atmospheric effects to match the new season. Ensure all changes look natural and maintain the original landscape\'s character.',
     tags: ['creative', 'landscape', 'seasonal', 'nature', 'transformation'],
-    previewImage: '/prompt/seasonal-landscape-changer.webp',
+    previewImage: '/prompt/seasonal-landscape-changer.avif',
   },
   {
     id: '8',
@@ -173,7 +173,7 @@ export const prompts: PromptData[] = [
     description: 'Seamlessly integrate logos and branding into existing photos',
     prompt: 'Seamlessly integrate branding elements into this photograph. Add logos or text in a natural way that complements the image composition. Ensure the branding looks like it was originally part of the scene with proper lighting, shadows, and perspective. Maintain brand guidelines while creating authentic integration.',
     tags: ['design', 'branding', 'integration', 'logo', 'marketing'],
-    previewImage: '/prompt/logo-integration.webp',
+    previewImage: '/prompt/logo-integration.avif',
   },
   {
     id: '13',
