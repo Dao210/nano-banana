@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -6,7 +5,7 @@ import { Copy, Check, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 
 interface PromptCardPreviewProps {
   id: string;
@@ -27,29 +26,13 @@ const PromptCardPreview = ({
   tags,
   previewImage,
 }: PromptCardPreviewProps) => {
-  const [isCopied, setIsCopied] = useState(false);
+  const { copyToClipboard, isCopied } = useCopyToClipboard();
   const router = useRouter();
-  const { toast } = useToast();
 
-  const handleCopy = async (e: React.MouseEvent) => {
+  const handleCopy = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
-    try {
-      await navigator.clipboard.writeText(prompt);
-      setIsCopied(true);
-      toast({
-        title: "Copied!",
-        description: "Prompt copied to clipboard.",
-      });
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
-      toast({
-        title: "Failed to copy",
-        description: "Please try again.",
-        variant: "destructive",
-      });
-    }
+    copyToClipboard(prompt);
   };
 
   const handleViewDetails = (e: React.MouseEvent) => {

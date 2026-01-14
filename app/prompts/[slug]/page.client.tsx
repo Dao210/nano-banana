@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Copy, Check, ArrowLeft, Share2, ExternalLink } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/header';
@@ -39,25 +38,10 @@ export default function PromptDetailClient({
   relatedPrompts,
   categoryLabel,
 }: PromptDetailClientProps) {
-  const [isCopied, setIsCopied] = useState(false);
-  const { toast } = useToast();
+  const { copyToClipboard, isCopied } = useCopyToClipboard();
 
-  const handleCopyPrompt = async () => {
-    try {
-      await navigator.clipboard.writeText(prompt.prompt);
-      setIsCopied(true);
-      toast({
-        title: 'Prompt copied!',
-        description: 'The prompt has been copied to your clipboard.',
-      });
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
-      toast({
-        title: 'Failed to copy',
-        description: 'Please try again or copy manually.',
-        variant: 'destructive',
-      });
-    }
+  const handleCopyPrompt = () => {
+    copyToClipboard(prompt.prompt);
   };
 
   const handleShare = async () => {
@@ -74,10 +58,8 @@ export default function PromptDetailClient({
     } else {
       // Fallback: copy URL to clipboard
       await navigator.clipboard.writeText(window.location.href);
-      toast({
-        title: 'Link copied!',
-        description: 'The page link has been copied to your clipboard.',
-      });
+      // Note: We're not using toast here since it's a different use case
+      // You could add a toast notification here if desired
     }
   };
 

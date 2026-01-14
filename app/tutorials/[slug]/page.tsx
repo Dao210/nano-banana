@@ -23,6 +23,7 @@ import { Header } from "@/components/header"
 import { SchemaOrg, BreadcrumbSchema } from "@/components/seo-schema"
 import { getTutorialMetadata } from "@/data/tutorials"
 import { notFound } from "next/navigation"
+import { AdInArticle, AdSidebar } from "@/components/ads/AdSenseUnit"
 
 // This would typically come from a database or CMS
 const tutorialData = {
@@ -368,6 +369,11 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
               </CardContent>
             </Card>
 
+            {/* AdSense In-Article */}
+            <div className="mb-8">
+              <AdInArticle />
+            </div>
+
             {/* Tutorial Content */}
             <div className="prose prose-lg max-w-none">
               <div className="bg-card p-6 rounded-lg mb-8">
@@ -500,6 +506,11 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
               </Button>
             </div>
 
+            {/* AdSense In-Article */}
+            <div className="my-8">
+              <AdInArticle />
+            </div>
+
             {/* Comments Section */}
             <Card className="mt-8">
               <CardHeader>
@@ -588,6 +599,9 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
                   </div>
                 </CardContent>
               </Card>
+
+              {/* AdSense Sidebar */}
+              <AdSidebar />
 
               {/* Related Tutorials */}
               <Card>

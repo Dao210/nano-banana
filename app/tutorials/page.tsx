@@ -9,6 +9,7 @@ import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import dynamic from 'next/dynamic'
+import { AdBanner, AdInArticle } from "@/components/ads/AdSenseUnit"
 
 // 动态导入SEO组件以避免ChunkLoadError
 const SchemaOrg = dynamic(() => import("@/components/seo-schema").then(mod => ({ default: mod.SchemaOrg })), {
@@ -430,6 +431,11 @@ export default function TutorialsPage() {
               </div>
             </div>
 
+            {/* AdSense Banner */}
+            <div className="container mx-auto py-6">
+              <AdBanner />
+            </div>
+
             {/* All Tutorials */}
             <div>
               <div className="flex items-center justify-between mb-6">
@@ -440,7 +446,73 @@ export default function TutorialsPage() {
               </div>
 
               <div className="grid gap-6">
-                {featuredTutorials.map((tutorial) => (
+                {featuredTutorials.slice(0, 2).map((tutorial) => (
+                  <Card key={tutorial.id} className="group hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="md:w-48 aspect-video md:aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <img src={tutorial.cover || "/placeholder.jpg"} alt={tutorial.title} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="flex-1">
+                        <CardHeader>
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge
+                              variant={
+                                tutorial.difficulty === "beginner"
+                                  ? "secondary"
+                                  : tutorial.difficulty === "intermediate"
+                                    ? "outline"
+                                    : "default"
+                              }
+                            >
+                              {tutorial.category}
+                            </Badge>
+                            <div className="flex items-center text-sm text-muted-foreground">
+                              <Star className="h-4 w-4 fill-current text-yellow-500 mr-1" />
+                              {tutorial.rating}
+                            </div>
+                            <div className="flex items-center text-sm text-muted-foreground">
+                              <Clock className="h-4 w-4 mr-1" />
+                              {tutorial.readTime}
+                            </div>
+                            {tutorial.featured && <Badge variant="secondary">Featured</Badge>}
+                          </div>
+                          <CardTitle className="group-hover:text-primary transition-colors">{tutorial.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription className="mb-4">{tutorial.description}</CardDescription>
+                          <div className="flex flex-wrap gap-1 mb-4">
+                            {tutorial.tags.map((tag) => (
+                              <Badge key={tag} variant="outline" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm text-muted-foreground">{tutorial.views} views</span>
+                            <Link href={tutorial.link || '#'} title={tutorial.title}>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                            >
+                              Read Tutorial
+                              <ArrowRight className="h-4 w-4 ml-1" />
+                            </Button>
+                            </Link>
+                          </div>
+                        </CardContent>
+                      </div>
+
+                    </div>
+                  </Card>
+                ))}
+
+                {/* AdSense In-Article */}
+                <div className="container mx-auto py-4">
+                  <AdInArticle />
+                </div>
+
+                {featuredTutorials.slice(2).map((tutorial) => (
                   <Card key={tutorial.id} className="group hover:shadow-md transition-all duration-300">
                     <div className="flex flex-col md:flex-row">
                       <div className="md:w-48 aspect-video md:aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">

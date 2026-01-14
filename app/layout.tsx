@@ -6,6 +6,7 @@ import { Suspense } from "react"
 import Script from "next/script"
 import { WebVitalsInit } from "@/components/WebVitalsInit"
 import { SkipLink } from "@/components/skip-link"
+import { Toaster } from "@/components/ui/toaster"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -137,6 +138,7 @@ export default function RootLayout({
         {/* DNS prefetch and preconnect for performance */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         {/* Note: Next.js Fonts automatically handles font preloading, no manual preload needed */}
 
         {/* ...existing meta/link... */}
@@ -162,12 +164,20 @@ export default function RootLayout({
             `
           }}
         />
+
+        {/* Google AdSense - Lazy loading */}
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8886185433147735"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`font-sans ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
         <SkipLink href="#main-content">Skip to main content</SkipLink>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
         <WebVitalsInit />
+        <Toaster />
       </body>
     </html>
   )

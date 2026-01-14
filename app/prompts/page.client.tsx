@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { Search, Loader2 } from "lucide-react"
 import { mainTags as baseMainTags, prompts as dataPrompts } from "@/data/prompts"
 import dynamic from 'next/dynamic'
+import { AdBanner } from "@/components/ads/AdSenseUnit"
 
 // 动态导入SEO组件以避免ChunkLoadError
 const SchemaOrg = dynamic(() => import("@/components/seo-schema").then(mod => ({ default: mod.SchemaOrg })), {
@@ -160,6 +161,11 @@ const PromptPage = () => {
       <main id="main-content">
         <Hero />
 
+        {/* AdSense Banner */}
+        <div className="container mx-auto max-w-6xl py-6">
+          <AdBanner />
+        </div>
+
         {/* Search & Sort Bar */}
         <section className="border-b bg-card/50" aria-label="Search and filter prompts">
           <div className="container mx-auto max-w-6xl py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -198,6 +204,11 @@ const PromptPage = () => {
 
         {/* Grid */}
         <PromptGrid prompts={visiblePrompts as any} />
+
+        {/* AdSense In-Article */}
+        <div className="container mx-auto max-w-6xl py-6">
+          <AdBanner />
+        </div>
 
         {/* Load More Button */}
         {hasMore && (

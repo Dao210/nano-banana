@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Copy, Check, ExternalLink } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -21,28 +20,12 @@ interface PromptCardProps {
 }
 
 const PromptCard = ({ id, slug, title, description, prompt, tags, previewImage, originalImages }: PromptCardProps) => {
-  const [isCopied, setIsCopied] = useState(false);
-  const { toast } = useToast();
+  const { copyToClipboard, isCopied } = useCopyToClipboard();
 
-  const handleCopyPrompt = async (e: React.MouseEvent) => {
+  const handleCopyPrompt = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
-    try {
-      await navigator.clipboard.writeText(prompt);
-      setIsCopied(true);
-      toast({
-        title: "Prompt copied!",
-        description: "The prompt has been copied to your clipboard.",
-      });
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
-      toast({
-        title: "Failed to copy",
-        description: "Please try again or copy manually.",
-        variant: "destructive",
-      });
-    }
+    copyToClipboard(prompt);
   };
 
   // Prepare tags for display (max 3 tags + "+N more")
