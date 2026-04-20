@@ -60,6 +60,11 @@ function Footer() {
                   About
                 </Link>
               </li>
+              <li>
+                <a href="https://agentpage.io/" target="_blank" rel="noopener" className="text-slate-400 hover:text-white text-sm transition-colors">
+                  AgentPage
+                </a>
+              </li>
             </ul>
           </div>
 
