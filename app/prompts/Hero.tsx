@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Code, Palette, ShoppingCart, Camera, User, Zap } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 const Hero = () => {
   // 科技感SVG背景元素
@@ -37,34 +36,20 @@ const Hero = () => {
     </div>
   );
 
-  // 类别图标映射
-  const categoryIcons = {
-    creative: <Palette className="w-5 h-5" />,
-    design: <Zap className="w-5 h-5" />,
-    ecommerce: <ShoppingCart className="w-5 h-5" />,
-    photography: <Camera className="w-5 h-5" />,
-    character: <User className="w-5 h-5" />,
-    all: <Code className="w-5 h-5" />
-  };
-
   return (
-    <section className="relative overflow-hidden bg-background py-20 flex items-center">
+    <section className="relative overflow-hidden bg-background py-12">
       {/* 科技感背景 */}
       <TechBackground />
-      
+
       <div className="container relative z-10 mx-auto max-w-6xl px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 tech-glow tech-gradient px-4 py-2 rounded-full text-sm font-medium text-white mb-6 tech-float">
+          <div className="inline-flex items-center gap-2 tech-glow tech-gradient px-3 py-1.5 rounded-full text-sm font-medium text-white mb-4 tech-float">
             <Sparkles className="h-4 w-4" />
             Explore the Prompt Library and use our prompts
           </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
-            Unleash {' '}
-            <span className="tech-text">
-              10x creativity
-            </span>{' '}
-            Seamlessly transform ideas into images
+
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
+            Unleash <span className="tech-text">10x creativity</span>, turn ideas into images
           </h1>
         </div>
       </div>
