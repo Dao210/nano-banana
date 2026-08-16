@@ -17,7 +17,7 @@ function Footer() {
                 <Image src="/banana.webp" alt="Logo" width={32} height={32} className="h-8 w-8 text-white" />
               </div>
               <span className="font-bold text-xl text-white font-[family-name:var(--font-space-grotesk)]">
-                NanoBanana.fans
+                nano.theskills.ai
               </span>
             </Link>
             <p className="text-slate-400 text-sm mb-4 text-pretty">
