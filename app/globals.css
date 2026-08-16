@@ -254,6 +254,25 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* 渐变文字流光扫过 */
+  .tech-shimmer {
+    background: linear-gradient(110deg,
+      oklch(0.55 0.21 250) 0%,
+      oklch(0.48 0.18 280) 30%,
+      oklch(0.78 0.1 220) 50%,
+      oklch(0.48 0.18 280) 70%,
+      oklch(0.55 0.21 250) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerSweep 5s linear infinite;
+  }
+
+  @keyframes shimmerSweep {
+    to { background-position: -200% center; }
+  }
   
   /* 科技感动画 - 优化为hover触发以减少CLS */
   .tech-float {
@@ -407,6 +426,11 @@
   /* 禁用发光效果 */
   .tech-glow {
     filter: none !important;
+  }
+
+  /* 禁用流光动画 */
+  .tech-shimmer {
+    animation: none !important;
   }
 
   /* 禁用GPU加速以减少内存使用 */

@@ -1,58 +1,29 @@
 import { Sparkles } from 'lucide-react';
 
 const Hero = () => {
-  // 科技感SVG背景元素
-  const TechBackground = () => (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      {/* SVG网格背景 */}
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(59, 130, 246, 0.1)" strokeWidth="1"/>
-          </pattern>
-          <radialGradient id="radial-gradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(59, 130, 246, 0.1)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
-          </radialGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-        <circle cx="20%" cy="30%" r="120" fill="url(#radial-gradient)" />
-        <circle cx="80%" cy="70%" r="100" fill="url(#radial-gradient)" />
-        <circle cx="40%" cy="80%" r="80" fill="url(#radial-gradient)" />
-      </svg>
-      
-      {/* 科技感光点 */}
-      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-30 animate-pulse"></div>
-      <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-300 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-indigo-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-      
-      {/* 科技感线条 */}
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10%" y1="20%" x2="30%" y2="10%" stroke="rgba(59, 130, 246, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1="70%" y1="15%" x2="90%" y2="25%" stroke="rgba(139, 92, 246, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1="20%" y1="80%" x2="40%" y2="90%" stroke="rgba(6, 182, 212, 0.1)" strokeWidth="1" strokeDasharray="4 4" />
-      </svg>
-    </div>
-  );
-
   return (
-    <section className="relative overflow-hidden bg-background py-12">
-      {/* 科技感背景 */}
-      <TechBackground />
+    <section className="relative overflow-hidden bg-background">
+      {/* 背景装饰：径向渐隐网格 + 呼吸光晕 */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <div className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_65%_100%_at_50%_0%,black_30%,transparent_75%)]" />
+        <div className="hero-orb hero-orb-primary" />
+        <div className="hero-orb hero-orb-secondary" />
+      </div>
 
-      <div className="container relative z-10 mx-auto max-w-6xl px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 tech-glow tech-gradient px-3 py-1.5 rounded-full text-sm font-medium text-white mb-4 tech-float">
-            <Sparkles className="h-4 w-4" />
-            Explore the Prompt Library and use our prompts
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 pt-9 pb-7">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium tracking-wide text-primary">
+            <Sparkles className="h-3 w-3" />
+            Prompt Library
           </div>
-
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Unleash <span className="tech-text">10x creativity</span>, turn ideas into images
+          <h1 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold leading-tight tracking-tight md:text-4xl">
+            Unleash <span className="tech-text tech-shimmer">10x creativity</span>, turn ideas into images
           </h1>
         </div>
       </div>
+
+      {/* 底部渐隐分割线 */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" aria-hidden="true" />
     </section>
   );
 };
