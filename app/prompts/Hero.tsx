@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="hero-orb hero-orb-secondary" />
       </div>
 
-      <div className="container relative z-10 mx-auto max-w-6xl px-4 pt-9 pb-7">
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 pt-9 pb-0">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium tracking-wide text-primary">
             <Sparkles className="h-3 w-3" />

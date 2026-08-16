@@ -161,11 +161,6 @@ const PromptPage = () => {
       <main id="main-content">
         <Hero />
 
-        {/* AdSense Banner */}
-        <div className="container mx-auto max-w-6xl py-4">
-          <AdBanner />
-        </div>
-
         {/* Search & Sort Bar */}
         <section className="border-b bg-card/50" aria-label="Search and filter prompts">
           <div className="container mx-auto max-w-3xl px-4 py-4">
@@ -196,6 +191,11 @@ const PromptPage = () => {
             </div>
           </div>
         </section>
+
+        {/* AdSense Banner */}
+        <div className="container mx-auto max-w-6xl py-4">
+          <AdBanner />
+        </div>
 
         {/* Category Filter */}
         <CategoryFilter
