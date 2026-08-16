@@ -199,11 +199,6 @@ const PromptPage = () => {
           onCategoryChange={setActiveTag}
         />
 
-        {/* AdSense Banner */}
-        <div className="container mx-auto max-w-6xl py-4">
-          <AdBanner />
-        </div>
-
         {/* Grid */}
         <PromptGrid prompts={visiblePrompts as any} />
 
