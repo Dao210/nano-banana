@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nano Banana AI Prompt Library - 25+ Free AI Image Editing Prompts',
     description: 'Access curated AI prompt examples designed for cutting-edge image generation models. Transform your creative workflow with proven prompt templates.',
-    url: 'https://nanobanana.fans/prompts',
+    url: 'https://nano.theskills.ai/prompts',
     siteName: 'Nano Banana Tutorial',
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     images: ['/prompt/hero-brain.jpg'],
   },
   alternates: {
-    canonical: 'https://nanobanana.fans/prompts',
+    canonical: 'https://nano.theskills.ai/prompts',
   },
   robots: {
     index: true,

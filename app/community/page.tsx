@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   keywords:
     "Nano Banana community, AI image editing forum, Google Gemini users, tutorials, tips, collaboration, discussion",
   alternates: {
-    canonical: "https://nanobanana.fans/community",
+    canonical: "https://nano.theskills.ai/community",
   },
   openGraph: {
     title: "Nano Banana Community - Connect, Share & Learn",
     description:
       "Join the Nano Banana Community to connect with fellow creators, share AI image editing tips, and stay updated with the latest trends.",
     type: "website",
-    url: "https://nanobanana.fans/community",
+    url: "https://nano.theskills.ai/community",
   },
 }
 
@@ -35,7 +35,7 @@ export default function CommunityPage() {
           title: "Nano Banana Community - Connect, Share & Learn",
           description:
             "Join the Nano Banana Community to connect with fellow creators, share AI image editing tips, and stay updated with the latest trends.",
-          url: "https://nanobanana.fans/community",
+          url: "https://nano.theskills.ai/community",
           keywords: [
             "Nano Banana community",
             "AI image editing forum",

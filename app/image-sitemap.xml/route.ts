@@ -1,7 +1,7 @@
 import { prompts } from "@/data/prompts"
 
 export async function GET() {
-  const baseUrl = "https://nanobanana.fans"
+  const baseUrl = "https://nano.theskills.ai"
 
   // Generate image entries for all prompts
   const imageEntries = prompts.map((prompt) => {

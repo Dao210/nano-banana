@@ -23,11 +23,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'nanobanana.fans',
+        hostname: 'nano.theskills.ai',
       },
       {
         protocol: 'https',
-        hostname: 'cdn.nanobanana.fans',
+        hostname: 'cdn.nano.theskills.ai',
       },
     ],
   },

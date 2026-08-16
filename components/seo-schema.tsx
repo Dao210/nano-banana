@@ -48,7 +48,7 @@ export function SchemaOrg({ type, data }: SchemaOrgProps) {
       name: schemaTitle,
       description: data.description,
       url: data.url,
-      image: data.image || "https://nanobanana.fans/og-image.jpg",
+      image: data.image || "https://nano.theskills.ai/og-image.jpg",
     }
 
     if (type === "website") {
@@ -60,14 +60,14 @@ export function SchemaOrg({ type, data }: SchemaOrgProps) {
           name: "Nano Banana Tutorial Platform",
           logo: {
             "@type": "ImageObject",
-            url: "https://nanobanana.fans/logo.png",
+            url: "https://nano.theskills.ai/logo.png",
           },
         },
         potentialAction: {
           "@type": "SearchAction",
           target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://nanobanana.fans/search?search={search_term_string}",
+            urlTemplate: "https://nano.theskills.ai/search?search={search_term_string}",
           },
           "query-input": "required name=search_term_string",
         },
@@ -89,7 +89,7 @@ export function SchemaOrg({ type, data }: SchemaOrgProps) {
           name: "Nano Banana Tutorial Platform",
           logo: {
             "@type": "ImageObject",
-            url: "https://nanobanana.fans/logo.png",
+            url: "https://nano.theskills.ai/logo.png",
           },
         },
         keywords: data.keywords?.join(", "),
@@ -130,7 +130,7 @@ export function SchemaOrg({ type, data }: SchemaOrgProps) {
           name: "Nano Banana Tutorial Platform",
           logo: {
             "@type": "ImageObject",
-            url: "https://nanobanana.fans/logo.png",
+            url: "https://nano.theskills.ai/logo.png",
           },
         },
         keywords: data.keywords?.join(", "),
@@ -317,7 +317,7 @@ export function VideoSchema({ data }: VideoSchemaProps) {
       name: "Nano Banana Tutorial Platform",
       logo: {
         "@type": "ImageObject",
-        url: "https://nanobanana.fans/logo.png",
+        url: "https://nano.theskills.ai/logo.png",
       },
     },
   }

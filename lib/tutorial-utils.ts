@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import type { TutorialData } from "@/types/tutorial"
 
-const BASE_URL = "https://nanobanana.fans"
+const BASE_URL = "https://nano.theskills.ai"
 
 /**
  * Generates Next.js Metadata for a tutorial page

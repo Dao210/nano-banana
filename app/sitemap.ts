@@ -5,7 +5,7 @@ import { prompts } from "@/data/prompts"
 import { staticPagesUpdates, tutorialPagesUpdates } from "@/data/content-updates"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://nanobanana.fans"
+  const baseUrl = "https://nano.theskills.ai"
 
   // Static pages with actual lastModified dates from content-updates.ts
   const staticPages = staticPagesUpdates.map((page) => ({

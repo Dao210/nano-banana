@@ -1,5 +1,5 @@
 {
-  "name": "nanobanana.fans",
+  "name": "nano.theskills.ai",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,7 @@
     "optimize:4-3": "node scripts/optimize-aspect-ratio.js --ratio=4:3",
     "optimize:21-9": "node scripts/optimize-aspect-ratio.js --ratio=21:9",
     "analyze": "ANALYZE=true next build",
-    "lighthouse": "lighthouse https://nanobanana.fans --output=html --output-path=./lighthouse-report.html",
+    "lighthouse": "lighthouse https://nano.theskills.ai --output=html --output-path=./lighthouse-report.html",
     "lighthouse:ci": "lhci autorun"
   },
   "dependencies": {

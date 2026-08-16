@@ -35,14 +35,14 @@ export const metadata: Metadata = {
   keywords:
     "Nano Banana tutorials, AI image editing guides, Google Gemini tutorials, character consistency, multi-turn editing, image generation tutorials",
   alternates: {
-    canonical: "https://nanobanana.fans/tutorials",
+    canonical: "https://nano.theskills.ai/tutorials",
   },
   openGraph: {
     title: "Nano Banana Tutorials - Complete Learning Library",
     description:
       "Browse our comprehensive collection of Nano Banana AI tutorials and master Google's revolutionary image editing technology.",
     type: "website",
-    url: "https://nanobanana.fans/tutorials",
+    url: "https://nano.theskills.ai/tutorials",
   },
 }
 
@@ -204,15 +204,15 @@ export default function TutorialsPage() {
           title: "Nano Banana Tutorials - Complete Learning Library",
           description:
             "Browse our comprehensive collection of Nano Banana AI tutorials. From beginner guides to advanced techniques, master Google's revolutionary image editing technology.",
-          url: "https://nanobanana.fans/tutorials",
+          url: "https://nano.theskills.ai/tutorials",
           keywords: ["Nano Banana tutorials", "AI image editing guides", "Google Gemini tutorials", "character consistency", "multi-turn editing", "AI photography"],
         }}
       />
       
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://nanobanana.fans/" },
-          { name: "Tutorials", url: "https://nanobanana.fans/tutorials" }
+          { name: "Home", url: "https://nano.theskills.ai/" },
+          { name: "Tutorials", url: "https://nano.theskills.ai/tutorials" }
         ]}
       />
       
@@ -220,7 +220,7 @@ export default function TutorialsPage() {
         data={{
           name: "Nano Banana AI Image Editing Mastery Course",
           description: "Comprehensive course covering all aspects of Google's Nano Banana AI image editing technology, from beginner basics to advanced professional techniques.",
-          url: "https://nanobanana.fans/tutorials",
+          url: "https://nano.theskills.ai/tutorials",
           provider: "Nano Banana Tutorial Platform",
           educationalLevel: "Beginner to Advanced",
           inLanguage: "en",

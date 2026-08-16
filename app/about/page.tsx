@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   keywords:
     "Nano Banana Fans, AI image editing community, Google Gemini users, Nano Banana tutorials, character consistency, multi-turn editing, creative AI",
   alternates: {
-    canonical: "https://nanobanana.fans/about",
+    canonical: "https://nano.theskills.ai/about",
   },
   openGraph: {
     title: "About Nano Banana Fans - Your AI Image Editing Community",
     description:
       "Discover Nano Banana Fans, the passionate community of creators mastering Google's revolutionary AI image editing technology.",
-    url: "https://nanobanana.fans/about",
+    url: "https://nano.theskills.ai/about",
     siteName: "Nano Banana Fans",
     images: [
       {

@@ -6,7 +6,7 @@ export function PromptsSchema() {
     "@type": "CollectionPage",
     "name": "Nano Banana AI Prompt Library",
     "description": "Discover 25+ curated Nano Banana AI prompts for image editing, character consistency, product photography, and creative design. Free prompt templates for beginners and professionals.",
-    "url": "https://nanobanana.fans/prompts",
+    "url": "https://nano.theskills.ai/prompts",
     "mainEntity": {
       "@type": "ItemList",
       "name": "Nano Banana AI Prompts",
@@ -19,8 +19,8 @@ export function PromptsSchema() {
           "@type": "CreativeWork",
           "name": prompt.title,
           "description": prompt.description,
-          "url": `https://nanobanana.fans/prompts#${prompt.id}`,
-          "image": `https://nanobanana.fans${prompt.previewImage}`,
+          "url": `https://nano.theskills.ai/prompts#${prompt.id}`,
+          "image": `https://nano.theskills.ai${prompt.previewImage}`,
           "about": {
             "@type": "Thing",
             "name": "AI Image Editing"
@@ -42,23 +42,23 @@ export function PromptsSchema() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://nanobanana.fans"
+          "item": "https://nano.theskills.ai"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "AI Prompts",
-          "item": "https://nanobanana.fans/prompts"
+          "item": "https://nano.theskills.ai/prompts"
         }
       ]
     },
     "publisher": {
       "@type": "Organization",
       "name": "Nano Banana Tutorial",
-      "url": "https://nanobanana.fans",
+      "url": "https://nano.theskills.ai",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nanobanana.fans/placeholder-logo.png"
+        "url": "https://nano.theskills.ai/placeholder-logo.png"
       }
     },
     "author": {

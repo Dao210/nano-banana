@@ -185,7 +185,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
-  const baseUrl = 'https://nanobanana.fans'
+  const baseUrl = 'https://nano.theskills.ai'
   const tutorialUrl = `${baseUrl}/tutorials/${slug}`
 
   return {
@@ -233,8 +233,8 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
         data={{
           title: tutorialData.title,
           description: tutorialData.description,
-          url: `https://nanobanana.fans/tutorials/${slug}`,
-          image: "https://nanobanana.fans/og-image.jpg",
+          url: `https://nano.theskills.ai/tutorials/${slug}`,
+          image: "https://nano.theskills.ai/og-image.jpg",
           datePublished: tutorialData.publishedAt,
           dateModified: tutorialData.updatedAt,
           author: {
@@ -254,9 +254,9 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
 
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://nanobanana.fans" },
-          { name: "Tutorials", url: "https://nanobanana.fans/tutorials" },
-          { name: tutorialData.title, url: `https://nanobanana.fans/tutorials/${slug}` },
+          { name: "Home", url: "https://nano.theskills.ai" },
+          { name: "Tutorials", url: "https://nano.theskills.ai/tutorials" },
+          { name: tutorialData.title, url: `https://nano.theskills.ai/tutorials/${slug}` },
         ]}
       />
 

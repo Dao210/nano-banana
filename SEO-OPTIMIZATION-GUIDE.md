@@ -51,7 +51,7 @@
 import { staticPagesUpdates, tutorialPagesUpdates } from '@/data/content-updates'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://nanobanana.fans'
+  const baseUrl = 'https://nano.theskills.ai'
 
   // Use actual last modified dates from content-updates.ts
   const staticPages = staticPagesUpdates.map(page => ({
@@ -89,7 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans/tutorials',
+    canonical: 'https://nano.theskills.ai/tutorials',
   },
 }
 ```
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans/about',
+    canonical: 'https://nano.theskills.ai/about',
   },
 }
 ```
@@ -109,7 +109,7 @@ export const metadata: Metadata = {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans/contact',
+    canonical: 'https://nano.theskills.ai/contact',
   },
 }
 ```
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans/community',
+    canonical: 'https://nano.theskills.ai/community',
   },
 }
 ```
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans/search',
+    canonical: 'https://nano.theskills.ai/search',
   },
 }
 ```
@@ -141,7 +141,7 @@ export const metadata: Metadata = {
 import { prompts } from '@/data/prompts'
 
 export async function GET() {
-  const baseUrl = 'https://nanobanana.fans'
+  const baseUrl = 'https://nano.theskills.ai'
 
   const imageEntries = prompts.map(prompt => `
     <url>
@@ -151,7 +151,7 @@ export async function GET() {
         <image:loc>${baseUrl}${prompt.previewImage}</image:loc>
         <image:title>${prompt.title}</image:title>
         <image:caption><![CDATA[${prompt.description}]]></image:caption>
-        <image:license>https://nanobanana.fans/terms</image:license>
+        <image:license>https://nano.theskills.ai/terms</image:license>
       </image:image>
     </url>
   `).join('')
@@ -176,7 +176,7 @@ export async function GET() {
 ```typescript
 // 在 app/sitemap.ts 中添加
 <sitemap>
-  <loc>https://nanobanana.fans/image-sitemap.xml</loc>
+  <loc>https://nano.theskills.ai/image-sitemap.xml</loc>
 </sitemap>
 ```
 
@@ -241,12 +241,12 @@ prompts.forEach(prompt => {
   data={{
     name: prompt.title,
     description: prompt.description,
-    image: `https://nanobanana.fans${prompt.previewImage}`,
+    image: `https://nano.theskills.ai${prompt.previewImage}`,
     steps: [
       {
         name: "Upload your image",
         text: "Start by uploading the image you want to transform",
-        image: `https://nanobanana.fans${prompt.previewImage}`,
+        image: `https://nano.theskills.ai${prompt.previewImage}`,
       },
       {
         name: "Apply the prompt",
@@ -269,9 +269,9 @@ prompts.forEach(prompt => {
 ```typescript
 <BreadcrumbSchema
   items={[
-    { name: "Home", url: "https://nanobanana.fans" },
-    { name: "Prompts", url: "https://nanobanana.fans/prompts" },
-    { name: prompt.title, url: `https://nanobanana.fans/prompts/${slug}` }
+    { name: "Home", url: "https://nano.theskills.ai" },
+    { name: "Prompts", url: "https://nano.theskills.ai/prompts" },
+    { name: prompt.title, url: `https://nano.theskills.ai/prompts/${slug}` }
   ]}
 />
 ```
@@ -288,11 +288,11 @@ prompts.forEach(prompt => {
 export const metadata: Metadata = {
   // ... existing metadata
   alternates: {
-    canonical: 'https://nanobanana.fans',
+    canonical: 'https://nano.theskills.ai',
     languages: {
-      'en': 'https://nanobanana.fans',
-      'zh-CN': 'https://nanobanana.fans/zh',
-      'es': 'https://nanobanana.fans/es',
+      'en': 'https://nano.theskills.ai',
+      'zh-CN': 'https://nano.theskills.ai/zh',
+      'es': 'https://nano.theskills.ai/es',
     },
   },
 }
@@ -304,11 +304,11 @@ export const metadata: Metadata = {
 metadata: {
   // ... existing
   alternates: {
-    canonical: 'https://nanobanana.fans/your-page',
+    canonical: 'https://nano.theskills.ai/your-page',
     languages: {
-      'en': 'https://nanobanana.fans/your-page',
-      'zh-CN': 'https://nanobanana.fans/zh/your-page',
-      'es': 'https://nanobanana.fans/es/your-page',
+      'en': 'https://nano.theskills.ai/your-page',
+      'zh-CN': 'https://nano.theskills.ai/zh/your-page',
+      'es': 'https://nano.theskills.ai/es/your-page',
     },
   },
 }
@@ -339,7 +339,7 @@ metadata: {
 
 ### 第 1 步: 完成 Sitemap 优化
 - [ ] 更新 `app/sitemap.ts` 使用 `content-updates.ts`
-- [ ] 验证 sitemap.xml: `https://nanobanana.fans/sitemap.xml`
+- [ ] 验证 sitemap.xml: `https://nano.theskills.ai/sitemap.xml`
 - [ ] 提交到 Google Search Console
 
 ### 第 2 步: 添加 Canonical URLs

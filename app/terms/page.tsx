@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Terms of Service | Nano Banana",
     description:
       "Terms of Service for Nano Banana tutorial platform. Simple, easy-to-use AI learning with daily content updates.",
-    url: "https://nanobanana.fans/terms",
+    url: "https://nano.theskills.ai/terms",
     siteName: "Nano Banana",
     type: "website",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Terms of Service for Nano Banana tutorial platform. Simple, easy-to-use AI learning with daily content updates.",
   },
   alternates: {
-    canonical: "https://nanobanana.fans/terms",
+    canonical: "https://nano.theskills.ai/terms",
   },
 }
 

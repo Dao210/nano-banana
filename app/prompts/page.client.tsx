@@ -58,7 +58,7 @@ const PromptPage = () => {
   // Determine current path for SEO and navigation
   const isRootPath = pathname === "/"
   const currentPath = isRootPath ? "/" : "/prompts"
-  const seoUrl = isRootPath ? "https://nanobanana.fans/" : "https://nanobanana.fans/prompts"
+  const seoUrl = isRootPath ? "https://nano.theskills.ai/" : "https://nano.theskills.ai/prompts"
 
   // Debounce search query for 300ms to reduce re-renders
   const debouncedQuery = useDebounce(query, 300)
@@ -140,7 +140,7 @@ const PromptPage = () => {
           title: "Nano Banana Prompts - AI Image Editing Prompt Library",
           description: "Browse our comprehensive collection of Nano Banana AI prompts. Find the perfect prompts for character consistency, style transfer, and advanced image editing techniques.",
           url: seoUrl,
-          image: "https://nanobanana.fans/og-image.jpg",
+          image: "https://nano.theskills.ai/og-image.jpg",
           keywords: ["Nano Banana prompts", "AI image editing prompts", "Google Gemini prompts", "character consistency prompts", "style transfer prompts"],
         }}
       />
@@ -148,10 +148,10 @@ const PromptPage = () => {
       <BreadcrumbSchema
         items={
           isRootPath
-            ? [{ name: "Home", url: "https://nanobanana.fans/" }]
+            ? [{ name: "Home", url: "https://nano.theskills.ai/" }]
             : [
-                { name: "Home", url: "https://nanobanana.fans/" },
-                { name: "Prompts", url: "https://nanobanana.fans/prompts" }
+                { name: "Home", url: "https://nano.theskills.ai/" },
+                { name: "Prompts", url: "https://nano.theskills.ai/prompts" }
               ]
         }
       />

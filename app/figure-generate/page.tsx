@@ -23,14 +23,14 @@ const metadata = {
     "Nano Banana API",
     "AI image editing",
   ],
-  url: "https://nanobanana.fans/figure-generate",
+  url: "https://nano.theskills.ai/figure-generate",
   openGraph: {
     title: "Figure Generator with Nano Banana AI | Nano Banana Tutorial Platform",
     description:
       "Generate stunning AI figures instantly using Nano Banana's advanced image generation API. Try the figure generator online and create unique visuals for your projects.",
     images: [
       {
-        url: "https://nanobanana.fans/og-image.jpg",
+        url: "https://nano.theskills.ai/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Nano Banana AI Figure Generator",
@@ -53,7 +53,7 @@ export default function FigureGeneratePage() {
     setImageUrl(null);
     try {
       // Replace with your actual Nano Banana API endpoint and key
-      const response = await fetch("https://api.nanobanana.fans/generate-figure", {
+      const response = await fetch("https://api.nano.theskills.ai/generate-figure", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

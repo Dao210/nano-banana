@@ -14,7 +14,7 @@ We believe in empowering individuals through education and community. By breakin
 
 Explore our tutorials and resources to learn more about Nano Banana and how you can get involved.
 
-**Website:** [https://www.nanobanana.fans](https://www.nanobanana.fans)
+**Website:** [https://nano.theskills.ai](https://nano.theskills.ai)
 
 ## Contributing
 

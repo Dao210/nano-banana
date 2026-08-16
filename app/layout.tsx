@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nanobanana.fans"),
+  metadataBase: new URL("https://nano.theskills.ai"),
   title: {
     default: "Nano Banana - AI Image Editing Prompt & Guides",
     template: "%s | Nano Banana Prompt",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "Google Nano Banana",
     "AI editing techniques"
   ],
-  authors: [{ name: "Nano Banana Tutorial Platform", url: "https://nanobanana.fans" }],
+  authors: [{ name: "Nano Banana Tutorial Platform", url: "https://nano.theskills.ai" }],
   creator: "Nano Banana Tutorial Platform",
   publisher: "Nano Banana Tutorial Platform",
   formatDetection: {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nanobanana.fans",
+    url: "https://nano.theskills.ai",
     siteName: "Nano Banana Tutorial Platform",
     title: "Nano Banana - AI Image Editing Prompt & Guides",
     description: "Master Google's Nano Banana AI image editing with comprehensive prompts, step-by-step guides, and expert tips. Learn advanced techniques for AI-powered photo editing and digital art creation.",
@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     site: "@nanobananaPrompt",
   },
   alternates: {
-    canonical: "https://nanobanana.fans",
+    canonical: "https://nano.theskills.ai",
     languages: {
-      "en-US": "https://nanobanana.fans",
+      "en-US": "https://nano.theskills.ai",
     },
   },
   category: "Education",
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     "article:author": "Nano Banana Tutorial Platform",
     "article:publisher": "Nano Banana Tutorial Platform",
     "og:site_name": "Nano Banana Tutorial Platform",
-    "twitter:domain": "nanobanana.fans",
+    "twitter:domain": "nano.theskills.ai",
     "theme-color": "#164e63",
     "msapplication-TileColor": "#164e63",
     "apple-mobile-web-app-title": "Nano Banana",
@@ -129,7 +129,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name='impact-site-verification' content='e0e82765-9e34-40d1-87f9-a10a6637245e' />
-        <link rel="canonical" href="https://nanobanana.fans" />
+        <link rel="canonical" href="https://nano.theskills.ai" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

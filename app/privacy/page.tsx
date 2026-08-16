@@ -5,7 +5,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - No Data Collection | nanobanana.fans",
+  title: "Privacy Policy - No Data Collection | nano.theskills.ai",
   description:
     "Our privacy-first approach: We don't collect any personal information, require no registration or login, and respect your complete anonymity while using our AI tutorials.",
   keywords:
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy - Complete Privacy Protection",
     description:
       "We don't collect any personal information, require no registration or login, and respect your complete anonymity.",
-    url: "https://nanobanana.fans/privacy",
+    url: "https://nano.theskills.ai/privacy",
     siteName: "Nano Banana Fans",
     images: [
       {

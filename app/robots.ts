@@ -18,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       ],
       crawlDelay: 1,
     },
-    sitemap: "https://nanobanana.fans/sitemap.xml",
-    host: "https://nanobanana.fans",
+    sitemap: "https://nano.theskills.ai/sitemap.xml",
+    host: "https://nano.theskills.ai",
   }
 }

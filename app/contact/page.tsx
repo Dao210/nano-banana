@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "Get in touch with the Nano Banana tutorial team. Ask questions, suggest topics, or report issues.",
   keywords: ["contact", "support", "help", "Nano Banana", "AI image editing"],
   alternates: {
-    canonical: "https://nanobanana.fans/contact",
+    canonical: "https://nano.theskills.ai/contact",
   },
   openGraph: {
     title: "Contact Us - Nano Banana Tutorial Platform",
     description: "Get in touch with the Nano Banana tutorial team. Ask questions, suggest topics, or report issues.",
     type: "website",
-    url: "https://nanobanana.fans/contact",
+    url: "https://nano.theskills.ai/contact",
   },
 }
 
@@ -26,7 +26,7 @@ export default function ContactPage() {
         data={{
           title: "Contact Us - Nano Banana Tutorial Platform",
           description: "Get in touch with the Nano Banana tutorial team.",
-          url: "https://nanobanana.fans/contact",
+          url: "https://nano.theskills.ai/contact",
         }}
       />
 
@@ -49,10 +49,10 @@ export default function ContactPage() {
                 For general questions, suggestions, or feedback about our tutorials and platform.
               </p>
               <a 
-                href="mailto:hello@nanobanana.fans" 
+                href="mailto:hello@nano.theskills.ai" 
                 className="text-primary hover:underline"
               >
-                hello@nanobanana.fans
+                hello@nano.theskills.ai
               </a>
             </div>
 
@@ -62,10 +62,10 @@ export default function ContactPage() {
                 Need help with specific Nano Banana techniques or tutorial content?
               </p>
               <a 
-                href="mailto:support@nanobanana.fans" 
+                href="mailto:support@nano.theskills.ai" 
                 className="text-primary hover:underline"
               >
-                support@nanobanana.fans
+                support@nano.theskills.ai
               </a>
             </div>
           </div>

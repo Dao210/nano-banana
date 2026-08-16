@@ -72,8 +72,8 @@ export default function PromptDetailClient({
           title: prompt.title,
           headline: prompt.title,
           description: prompt.description,
-          url: `https://nanobanana.fans/prompts/${prompt.slug}`,
-          image: `https://nanobanana.fans${prompt.previewImage}`,
+          url: `https://nano.theskills.ai/prompts/${prompt.slug}`,
+          image: `https://nano.theskills.ai${prompt.previewImage}`,
           keywords: [prompt.title, categoryLabel, 'Nano Banana', 'AI prompt', 'image editing', ...prompt.tags],
           category: prompt.tags[0],
         }}
@@ -81,10 +81,10 @@ export default function PromptDetailClient({
 
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://nanobanana.fans' },
-          { name: 'Prompts', url: 'https://nanobanana.fans/prompts' },
-          { name: categoryLabel, url: `https://nanobanana.fans/prompts?tag=${prompt.tags[0]}` },
-          { name: prompt.title, url: `https://nanobanana.fans/prompts/${prompt.slug}` },
+          { name: 'Home', url: 'https://nano.theskills.ai' },
+          { name: 'Prompts', url: 'https://nano.theskills.ai/prompts' },
+          { name: categoryLabel, url: `https://nano.theskills.ai/prompts?tag=${prompt.tags[0]}` },
+          { name: prompt.title, url: `https://nano.theskills.ai/prompts/${prompt.slug}` },
         ]}
       />
 

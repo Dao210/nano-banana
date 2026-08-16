@@ -44,15 +44,15 @@ export default function HomePage() {
           title: "Nano Banana - AI Image Editing Tutorials & Guides",
           description:
             "Master Google's Nano Banana AI image editing with comprehensive tutorials, step-by-step guides, and expert tips. Learn advanced techniques for AI-powered photo editing, digital art creation, and visual content generation.",
-          url: "https://nanobanana.fans/",
-          image: "https://nanobanana.fans/og-image.jpg",
+          url: "https://nano.theskills.ai/",
+          image: "https://nano.theskills.ai/og-image.jpg",
           keywords: ["Nano Banana", "Google AI", "image editing", "AI tutorials", "character consistency", "AI prompts", "digital art", "photo editing"],
         }}
       />
 
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://nanobanana.fans/" }
+          { name: "Home", url: "https://nano.theskills.ai/" }
         ]}
       />
 
@@ -60,7 +60,7 @@ export default function HomePage() {
         data={{
           name: "Nano Banana AI Image Editing Mastery",
           description: "Comprehensive course covering all aspects of Google's Nano Banana AI image editing technology, from beginner basics to advanced techniques.",
-          url: "https://nanobanana.fans/",
+          url: "https://nano.theskills.ai/",
           provider: "Nano Banana Tutorial Platform",
           educationalLevel: "Beginner to Advanced",
           inLanguage: "en",

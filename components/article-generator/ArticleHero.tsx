@@ -29,9 +29,9 @@ export function ArticleHero({ title, description, hero, category }: ArticleHeroP
       {/* Schema Org */}
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://nanobanana.fans" },
-          { name: "Tutorials", url: "https://nanobanana.fans/tutorials" },
-          { name: title, url: `https://nanobanana.fans/tutorials/${category}` },
+          { name: "Home", url: "https://nano.theskills.ai" },
+          { name: "Tutorials", url: "https://nano.theskills.ai/tutorials" },
+          { name: title, url: `https://nano.theskills.ai/tutorials/${category}` },
         ]}
       />
 

@@ -34,11 +34,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: prompt.title,
       description: prompt.description,
-      url: `https://nanobanana.fans/prompts/${slug}`,
+      url: `https://nano.theskills.ai/prompts/${slug}`,
       siteName: 'Nano Banana',
       images: [
         {
-          url: `https://nanobanana.fans${prompt.previewImage}`,
+          url: `https://nano.theskills.ai${prompt.previewImage}`,
           width: 1200,
           height: 630,
           alt: prompt.title,
@@ -51,10 +51,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: prompt.title,
       description: prompt.description,
-      images: [`https://nanobanana.fans${prompt.previewImage}`],
+      images: [`https://nano.theskills.ai${prompt.previewImage}`],
     },
     alternates: {
-      canonical: `https://nanobanana.fans/prompts/${slug}`,
+      canonical: `https://nano.theskills.ai/prompts/${slug}`,
     },
     robots: {
       index: true,

@@ -168,7 +168,7 @@ export default function ${config.id.charAt(0).toUpperCase() + config.id.slice(1)
         data={{
           title: tutorialData.title,
           description: tutorialData.description,
-          url: "https://nanobanana.fans/tutorials/${config.id}",
+          url: "https://nano.theskills.ai/tutorials/${config.id}",
           image: "${config.content.hero.coverImage}",
           datePublished: tutorialData.publishedAt,
           dateModified: tutorialData.updatedAt,
@@ -189,9 +189,9 @@ export default function ${config.id.charAt(0).toUpperCase() + config.id.slice(1)
 
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://nanobanana.fans" },
-          { name: "Tutorials", url: "https://nanobanana.fans/tutorials" },
-          { name: tutorialData.title, url: "https://nanobanana.fans/tutorials/${config.id}" },
+          { name: "Home", url: "https://nano.theskills.ai" },
+          { name: "Tutorials", url: "https://nano.theskills.ai/tutorials" },
+          { name: tutorialData.title, url: "https://nano.theskills.ai/tutorials/${config.id}" },
         ]}
       />
 
