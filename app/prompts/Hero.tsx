@@ -1,12 +1,13 @@
 import { Sparkles } from 'lucide-react';
+import type { ReactNode } from 'react';
 
-const Hero = () => {
+const Hero = ({ children }: { children?: ReactNode }) => {
   return (
     <section className="relative overflow-hidden bg-background">
       {/* 背景装饰：顶部径向光 + 渐隐网格 */}
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_90%_at_50%_-20%,rgba(59,130,246,0.14),transparent_70%)]" />
-        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_100%_at_50%_0%,black_20%,transparent_70%)]" />
+        <div className="tech-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_100%_at_50%_0%,black_20%,transparent_75%)]" />
         <div className="hero-orb hero-orb-primary" />
       </div>
 
@@ -19,6 +20,11 @@ const Hero = () => {
           Unleash <span className="tech-text tech-shimmer">10x creativity</span>
           <span className="text-muted-foreground"> — turn ideas into images</span>
         </h1>
+      </div>
+
+      {/* 背景延伸区：搜索等内容渲染在 Hero 背景内 */}
+      <div className="relative z-10 border-b border-border/60">
+        <div className="mx-auto max-w-3xl px-4 pb-5 pt-1">{children}</div>
       </div>
     </section>
   );

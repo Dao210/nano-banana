@@ -159,38 +159,34 @@ const PromptPage = () => {
       <PromptsSchema />
       <Header currentPath={currentPath} />
       <main id="main-content">
-        <Hero />
-
-        {/* Search & Sort Bar */}
-        <section className="border-b bg-card/50" aria-label="Search and filter prompts">
-          <div className="container mx-auto max-w-3xl px-4 py-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" aria-hidden="true" />
-                <Input
-                  placeholder="Search prompts, keywords, or text..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="h-11 rounded-full border-border/60 bg-background pl-11 pr-4 shadow-sm transition-shadow focus-visible:shadow-glow"
-                  aria-label="Search prompts"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <span id="sort-label" className="sr-only text-sm text-muted-foreground">Sort</span>
-                <Select value={sortBy} onValueChange={setSortBy} aria-labelledby="sort-label">
-                  <SelectTrigger className="h-11 w-full rounded-full border-border/60 bg-background sm:w-36">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="default">Default</SelectItem>
-                    <SelectItem value="title-asc">Title A→Z</SelectItem>
-                    <SelectItem value="title-desc">Title Z→A</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+        <Hero>
+          {/* Search & Sort Bar（渲染在 Hero 背景内） */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center" aria-label="Search and filter prompts">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" aria-hidden="true" />
+              <Input
+                placeholder="Search prompts, keywords, or text..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="h-11 rounded-full border-border/60 bg-background/80 pl-11 pr-4 shadow-sm backdrop-blur-sm transition-shadow focus-visible:bg-background focus-visible:shadow-glow"
+                aria-label="Search prompts"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <span id="sort-label" className="sr-only text-sm text-muted-foreground">Sort</span>
+              <Select value={sortBy} onValueChange={setSortBy} aria-labelledby="sort-label">
+                <SelectTrigger className="h-11 w-full rounded-full border-border/60 bg-background/80 backdrop-blur-sm sm:w-36">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="default">Default</SelectItem>
+                  <SelectItem value="title-asc">Title A→Z</SelectItem>
+                  <SelectItem value="title-desc">Title Z→A</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
-        </section>
+        </Hero>
 
         {/* Category Filter */}
         <CategoryFilter
