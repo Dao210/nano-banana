@@ -21,9 +21,6 @@ const Hero = () => {
           </h1>
         </div>
       </div>
-
-      {/* 底部渐隐分割线 */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" aria-hidden="true" />
     </section>
   );
 };

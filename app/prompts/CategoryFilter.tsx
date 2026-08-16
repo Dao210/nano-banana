@@ -15,7 +15,7 @@ interface CategoryFilterProps {
 
 const CategoryFilter = ({ categories, activeCategory, onCategoryChange }: CategoryFilterProps) => {
   return (
-    <section className="py-8 border-b bg-muted/30">
+    <section className="py-4 border-b bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-wrap gap-2 justify-center">
           {categories.map((category) => (
